@@ -401,7 +401,7 @@
 
 			});
 
-			$window.on('unload', function(event) {
+			$window.on('beforeunload', function(event) {
 
 				// Empty hash?
 					if (location.hash == ''
@@ -415,31 +415,6 @@
 							$main._hide();
 
 					}
-
-				// Otherwise, check for a matching article.
-					else if ($main_articles.filter(location.hash).length > 0) {
-
-						// Prevent default.
-							event.preventDefault();
-							event.stopPropagation();
-
-						// Show article.
-							$main._show(location.hash.substr(1));
-
-					}
-
-							
-					else if ($full_articles.filter(location.hash).length > 0) {
-
-						// Prevent default.
-							event.preventDefault();
-							event.stopPropagation();
-
-						// Show article.
-							$main._show(location.hash.substr(1));
-
-					}
-
 			});
 
 		// Scroll restoration.
