@@ -12,7 +12,9 @@
 		$header = $('#header'),
 		$footer = $('#footer'),
 		$main = $('#main'),
-		$main_articles = $main.children('.testarticle');
+		$main_articles = $main.children('.short_articles');
+		$main_articles = $main.children('.full_articles');
+
 
 
 	// Breakpoints.
