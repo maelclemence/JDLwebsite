@@ -402,8 +402,6 @@
 			});
 
 			$window.on('beforeunload', function(event) {
-							event.preventDefault();
-
 						// Hide.
 							$main._hide();
 
@@ -413,10 +411,11 @@
 			$window.on('load', function(event) {
 				// Check for a matching article.
 				if ($main_articles.filter(location.hash).length > 0) {
-
 					// Prevent default.
 						event.preventDefault();
 						event.stopPropagation();
+
+						$main._hide();
 
 					// Show article.
 						$main._show(location.hash.substr(1));
@@ -429,6 +428,7 @@
 					// Prevent default.
 						event.preventDefault();
 						event.stopPropagation();
+						$main._hide();
 
 					// Show article.
 						$main._show(location.hash.substr(1));
