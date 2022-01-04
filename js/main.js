@@ -401,7 +401,7 @@
 
 			});
 
-			$window.on('beforeunload', function(event) {
+			$window.on('unload', function(event) {
 
 				// Empty hash?
 					if (location.hash == ''
