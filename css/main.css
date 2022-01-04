@@ -263,6 +263,7 @@ section, summary, time, mark, audio, video {
     p {
       margin: 0 0 2rem 0;
       text-align: justify;
+      text-justify: inter-character;
     }
     
     h1, h2, h3, h4, h5, h6 {
