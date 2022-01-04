@@ -13,7 +13,7 @@
 		$footer = $('#footer'),
 		$main = $('#main'),
 		$main_articles = $main.children('.short_articles');
-		$main_articles = $main.children('.full_articles');
+		$full_articles = $main.children('.full_articles');
 
 
 
@@ -72,15 +72,18 @@
 		var	delay = 325,
 			locked = false;
 
-		// Methods.
+		// Methods
 			$main._show = function(id, initial) {
 
 				var $article = $main_articles.filter('#' + id);
 
+				// No such article? Check full_article.
+					if ($article.length == 0)
+						$article = $full_articles.filter('#' + id);
+
 				// No such article? Bail.
 					if ($article.length == 0)
 						return;
-
 				// Handle lock.
 
 					// Already locked? Speed through "show" steps w/o delays.
@@ -203,6 +206,9 @@
 			$main._hide = function(addState) {
 
 				var $article = $main_articles.filter('.active');
+				var $article = $main_articles.filter('.active');
+
+
 
 				// Article not visible? Bail.
 					if (!$body.hasClass('is-article-visible'))
@@ -289,7 +295,7 @@
 
 			};
 
-		// Articles.
+		// MAIN Articles.
 			$main_articles.each(function() {
 
 				var $this = $(this);
@@ -308,6 +314,24 @@
 
 			});
 
+		// FULL Articles.
+		$full_articles.each(function() {
+
+			var $this = $(this);
+				
+			// Close.
+				$('<div class="close">Close</div>')
+					.appendTo($this)
+					.on('click', function() {
+						location.href = 'https://www.jeudeloie.ch';
+					});
+
+			// Prevent clicks from inside article from bubbling.
+				$this.on('click', function(event) {
+					event.stopPropagation();
+				});
+
+		});
 		// Events.
 			$body.on('click', function(event) {
 
@@ -363,7 +387,56 @@
 
 					}
 
+							
+					else if ($full_articles.filter(location.hash).length > 0) {
+
+						// Prevent default.
+							event.preventDefault();
+							event.stopPropagation();
+
+						// Show article.
+							$main._show(location.hash.substr(1));
+
+					}
+
 			});
+
+			$window.on('beforeunload', function(event) {
+						// Hide.
+							$main._hide();
+
+
+			});
+
+			$window.on('load', function(event) {
+				// Check for a matching article.
+				if ($main_articles.filter(location.hash).length > 0) {
+					// Prevent default.
+						event.preventDefault();
+						event.stopPropagation();
+
+						$main._hide();
+
+					// Show article.
+						$main._show(location.hash.substr(1));
+
+				}
+
+						
+				else if ($full_articles.filter(location.hash).length > 0) {
+
+					// Prevent default.
+						event.preventDefault();
+						event.stopPropagation();
+						$main._hide();
+
+					// Show article.
+						$main._show(location.hash.substr(1));
+
+				}
+
+
+	});
 
 		// Scroll restoration.
 		// This prevents the page from scrolling back to the top on a hashchange.
@@ -393,6 +466,7 @@
 			// Hide main, articles.
 				$main.hide();
 				$main_articles.hide();
+				$full_articles.hide();
 
 			// Initial article.
 				if (location.hash != ''

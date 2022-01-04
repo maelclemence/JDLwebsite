@@ -262,6 +262,8 @@ section, summary, time, mark, audio, video {
     
     p {
       margin: 0 0 2rem 0;
+      text-align: justify;
+      text-justify: inter-character;
     }
     
     h1, h2, h3, h4, h5, h6 {
@@ -1387,11 +1389,6 @@ section, summary, time, mark, audio, video {
       border: solid 1px #ffffff;
       border-radius: 100%;
     }
-
-    #header .logo img:before {
-      max-width: 100%;
-      height: auto;
-    }
     
     #header .logo .icon:before {
       font-size: 2rem;
@@ -1404,7 +1401,6 @@ section, summary, time, mark, audio, video {
       border-bottom-width: 1px;
       max-width: 100%;
     }
-
     
     #header .content .inner {
       -moz-transition: max-height 0.75s ease, padding 0.75s ease, opacity 0.325s ease-in-out;
