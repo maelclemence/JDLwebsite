@@ -76,6 +76,7 @@
 
 				// No such article? Bail.
 					if ($article.length == 0)
+						print("wtf")
 						return;
 
 				// Handle lock.
