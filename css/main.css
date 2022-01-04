@@ -1535,8 +1535,7 @@ section, summary, time, mark, audio, video {
 
       #header .content .inner {
         padding: 2.5rem 1rem;
-        margin-left: 70px;
-        margin-right: 70px;
+        max-width: 500px;
       }
       
     }
