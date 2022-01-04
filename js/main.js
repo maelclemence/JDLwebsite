@@ -402,12 +402,6 @@
 			});
 
 			$window.on('beforeunload', function(event) {
-
-				// Empty hash?
-					if (location.hash == ''
-					||	location.hash == '#') {
-
-						// Prevent default.
 							event.preventDefault();
 							event.stopPropagation();
 
@@ -415,6 +409,7 @@
 							$main._hide();
 
 					}
+
 			});
 
 		// Scroll restoration.
