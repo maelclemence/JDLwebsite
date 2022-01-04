@@ -13,7 +13,7 @@
 		$footer = $('#footer'),
 		$main = $('#main'),
 		$main_articles = $main.children('short_articles');
-		$main_articles = $main.children('full_articles');
+		$full_articles = $main.children('full_articles');
 
 
 
