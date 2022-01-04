@@ -260,7 +260,7 @@ section, summary, time, mark, audio, video {
       font-style: italic;
     }
     
-    p {
+    p article{
       margin: 0 0 2rem 0;
       text-align: justify;
       text-justify: inter-character;
@@ -1513,6 +1513,34 @@ section, summary, time, mark, audio, video {
       opacity: 0;
     }
     
+    @media screen and (min-width: 980px) {
+      
+      #header .content p br {
+        display: none;
+      }
+
+      #header .content .inner {
+        padding: 2.5rem 1rem;
+        margin-left: 150px;
+        margin-right: 150px;
+      }
+      
+    }
+
+    @media screen and (min-width: 980px) {
+      
+      #header .content p br {
+        display: none;
+      }
+
+      #header .content .inner {
+        padding: 2.5rem 1rem;
+        margin-left: 70px;
+        margin-right: 70px;
+      }
+      
+    }
+
     @media screen and (max-width: 980px) {
       
       #header .content p br {
@@ -1520,7 +1548,6 @@ section, summary, time, mark, audio, video {
       }
       
     }
-    
     @media screen and (max-width: 736px) {
       
       #header > * {
