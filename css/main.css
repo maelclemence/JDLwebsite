@@ -68,6 +68,11 @@ video {
   vertical-align: middle;
 }
 
+iframe {
+  width : 1px;
+  min-width: 100%;
+}
+
 /*
 * Remove default fieldset styles.
 */
