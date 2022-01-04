@@ -401,7 +401,7 @@
 
 			});
 
-			$window.on('pathchage', function(event) {
+			$window.on('beforeunload', function(event) {
 
 				// Empty hash?
 					if (location.hash == ''
