@@ -206,6 +206,8 @@
 			$main._hide = function(addState) {
 
 				var $article = $main_articles.filter('.active');
+				var $article = $main_articles.filter('.active');
+
 
 
 				// Article not visible? Bail.
