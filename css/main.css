@@ -70,8 +70,7 @@ video {
 
 iframe {
   width : 1px;
-  min-width: 50%;
-  max-width: 75%;
+  min-width: 100%;
 }
 
 /*
