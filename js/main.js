@@ -402,9 +402,6 @@
 			});
 
 			$window.on('beforeunload', function(event) {
-							event.preventDefault();
-							event.stopPropagation();
-
 						// Hide.
 							$main._hide();
 
