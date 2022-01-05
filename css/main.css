@@ -265,7 +265,11 @@ section, summary, time, mark, audio, video {
       font-style: italic;
     }
     
-    p {
+    p{
+      margin: 0 0 2rem 0;
+    }
+
+    article p{
       margin: 0 0 2rem 0;
       text-align: justify;
       text-justify: inter-character;
@@ -1517,7 +1521,7 @@ section, summary, time, mark, audio, video {
       padding-bottom: 0;
       opacity: 0;
     }
-    
+
     @media screen and (max-width: 980px) {
       
       #header .content p br {
@@ -1525,7 +1529,6 @@ section, summary, time, mark, audio, video {
       }
       
     }
-    
     @media screen and (max-width: 736px) {
       
       #header > * {
@@ -1739,6 +1742,7 @@ section, summary, time, mark, audio, video {
       opacity: 0.75;
       margin-bottom: 0;
       text-transform: uppercase;
+      text-align: center;
     }
     
     body.is-article-visible #footer {
