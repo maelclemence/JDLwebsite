@@ -132,19 +132,25 @@
       <!-- Contact -->
       <article id="contact" class="short_articles">
         <h2 class="major">Contact</h2>
-        <form method="post" action="#">
+        <!-- Check formsubmit.co/documentation for more-->
+        <form method="post" action="https://formsubmit.co/4ecc14ad00b9aa096db4cf5c6e4dd003" enctype="multipart/form-data" name="EmailForm">
+          <input type="hidden" name="_next" value="https://jeudeloie.ch/#">
+          <input type="hidden" name="_subject" value="Nouveau Message depuis www.jeudeloie.ch">
+          <input type="text" name="_honey" style="display:none"> <!-- ça c'est pour tej les hackers-->
+          <input type="hidden" name="_autoresponse" value="Nous avons bien reçu votre requête et la traitons dans les meilleurs délais mdr">
+          <input type="hidden" name="_template" value="table">
           <div class="fields">
             <div class="field half">
               <label for="name">Nom</label>
-              <input type="text" name="name" id="name" />
+              <input type="text" name="name" id="name" placeholder="DjYoloswagg" required/>
             </div>
             <div class="field half">
               <label for="email">Email</label>
-              <input type="text" name="email" id="email" />
+              <input type="text" name="email" id="email" placeholder="yomec@lessgooo.ch" required/>
             </div>
             <div class="field">
               <label for="message">Message</label>
-              <textarea name="message" id="message" rows="4"></textarea>
+              <textarea name="message" id="message" rows="4" placeholder="Un petit message TROP CHOU par pitié" required></textarea>
             </div>
           </div>
           <ul class="actions">
@@ -153,10 +159,10 @@
           </ul>
         </form>
         <ul class="icons">
-          <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-          <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-          <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-          <li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+          <li><a href="https://twitter.com/alain_berset" class="icon brands fa-twitter" target="_blank"><span class="label">Twitter</span></a></li>
+          <li><a href="https://www.facebook.com/" class="icon brands fa-facebook-f" target="_blank"><span class="label">Facebook</span></a></li>
+          <li><a href="https://www.instagram.com/jeudeloie/" class="icon brands fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
+          <li><a href="https://github.com/maelclemence/JDLwebsite" class="icon brands fa-github" target="_blank"><span class="label">GitHub</span></a></li>
         </ul>
       </article>
       
@@ -406,6 +412,12 @@
         
         <!-- Footer -->
         <footer id="footer">
+          <ul class="icons">
+            <li><a href="https://twitter.com/alain_berset" class="icon brands fa-twitter" target="_blank"><span class="label">Twitter</span></a></li>
+            <li><a href="https://www.facebook.com/" class="icon brands fa-facebook-f" target="_blank"><span class="label">Facebook</span></a></li>
+            <li><a href="https://www.instagram.com/jeudeloie/" class="icon brands fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
+            <li><a href="https://github.com/maelclemence/JDLwebsite" class="icon brands fa-github" target="_blank"><span class="label">GitHub</span></a></li>
+          </ul>
           <p class="copyright">&copy; Maeul & Alexis.</p>
         </footer>
         
