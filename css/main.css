@@ -1419,7 +1419,6 @@ section, summary, time, mark, audio, video {
       padding: 3rem 2rem;
       max-height: 40rem;
       overflow: hidden;
-      max-width: 760px;
     }
     
     #header .content .inner > :last-child {
@@ -1739,6 +1738,7 @@ section, summary, time, mark, audio, video {
       opacity: 0.75;
       margin-bottom: 0;
       text-transform: uppercase;
+      text-align: center;
     }
     
     body.is-article-visible #footer {
