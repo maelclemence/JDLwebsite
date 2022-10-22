@@ -69,7 +69,7 @@
                             if (response.authResponse) {
                                 console.log('Welcome!  Fetching your information.... ');
                                 FB.api('/me', function(response) {
-                                console.log('Good to see you, ' + response.name + '.');
+                                    console.log('Good to see you, ' + response.name + '.');
                             });
                             } else {
                                 console.log('User cancelled login or did not fully authorize.');
@@ -92,12 +92,7 @@
                         js = d.createElement(s); js.id = id;
                         js.src = "https://connect.facebook.net/en_US/sdk.js";
                         fjs.parentNode.insertBefore(js, fjs);
-                        }(document, 'script', 'facebook-jssdk'));
-                        function checkLoginState() {
-                        FB.getLoginStatus(function(response) {
-                            statusChangeCallback(response);
-                        });
-                        }
+                    }(document, 'script', 'facebook-jssdk'));
 
                     function statusChangeCallback(response) {
                         console.log('statusChangeCallback');
@@ -105,9 +100,14 @@
                         if (response.status === 'connected') {
                             console.log('Logged in and authenticated');
                         } else {
-                            document.getElementById('status').innerHTML = 'Please log ' +
-                            'into this app.';
+                            console.log('Not authenticated');
                         }
+                    }
+
+                    function checkLoginState() {
+                        FB.getLoginStatus(function(response) {
+                            statusChangeCallback(response);
+                        });
                     }
                 </script>
                 
