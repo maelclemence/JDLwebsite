@@ -50,40 +50,6 @@
                             xfbml      : true,
                             version    : 'v15.0'
                         });
-                        
-                        FB.AppEvents.logPageView();   
-                        FB.getLoginStatus(function(response) {
-                            statusChangeCallback(response);
-                        });
-                        FB.logout(function(response) {
-                            // user is now logged out
-                            console.log("logout");
-                        });
-                        FB.ui({
-                            method: 'share',
-                            href: 'https://developers.facebook.com/docs/'
-                            }, function(response){}
-                        );
-                            
-                        FB.login(function(response) {
-                            if (response.authResponse) {
-                                console.log('Welcome!  Fetching your information.... ');
-                                FB.api('/me', function(response) {
-                                    console.log('Good to see you, ' + response.name + '.');
-                            });
-                            } else {
-                                console.log('User cancelled login or did not fully authorize.');
-                            }
-                        });
-                        
-                        FB.api(
-                            '/me',
-                            'GET',
-                            {"fields":"id,name"},
-                            function(response) {
-                                console.log('et donc voilà la réponse :', response);
-                            }
-                        );
                     };
                     
                     (function(d, s, id){
@@ -112,7 +78,7 @@
                 </script>
                 
                 <fb:login-button 
-                    scope="public_profile,email"
+                    scope="public_profile,email,user_birthday"
                     onlogin="checkLoginState();">
                 </fb:login-button>
             </p>
@@ -140,3 +106,38 @@
 </body>
 
 </html>
+
+
+<!-- FB.AppEvents.logPageView();   
+FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+});
+FB.logout(function(response) {
+    // user is now logged out
+    console.log("logout");
+});
+FB.ui({
+    method: 'share',
+    href: 'https://developers.facebook.com/docs/'
+    }, function(response){}
+);
+    
+FB.login(function(response) {
+    if (response.authResponse) {
+        console.log('Welcome!  Fetching your information.... ');
+        FB.api('/me', function(response) {
+            console.log('Good to see you, ' + response.name + '.');
+    });
+    } else {
+        console.log('User cancelled login or did not fully authorize.');
+    }
+});
+
+FB.api(
+    '/me',
+    'GET',
+    {"fields":"id,name"},
+    function(response) {
+        console.log('et donc voilà la réponse :', response);
+    }
+); -->
