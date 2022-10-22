@@ -42,13 +42,13 @@
                 <p>
                     En développement...
                     le script ci dessous :
-                    <script>
+                    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>                    <script>
                         window.fbAsyncInit = function() {
                           FB.init({
                             appId      : '1529858990784266',
                             cookie     : true,
                             xfbml      : true,
-                            version    : 'v3.2'
+                            version    : 'v15.0'
                           });
                             
                           FB.AppEvents.logPageView();   
