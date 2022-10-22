@@ -26,90 +26,99 @@
 <!-- Add your site or application content here -->
 
 <body class="is-preload">
+  
+    <!-- Wrapper -->
+    <div id="wrapper">
 
-    <!-- Main -->
-    <div id="main">
-        <h1 class="major">Spirale</h1>
-        <p>
-            le texte principal de la Spirale
-        </p>
-        <span class="image main"><img src="../../img/pic01.jpg" alt="" /></span>  
-        <h2 class="major">Développement</h2>
-        <p>
-            En développement...
-            le script ci dessous :
-            <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
-            <script>
-                window.fbAsyncInit = function() {
-                    FB.init({
-                        appId      : '1529858990784266',
-                        cookie     : true,
-                        xfbml      : true,
-                        version    : 'v15.0'
-                    });
-                    
-                    FB.AppEvents.logPageView();   
-                    FB.getLoginStatus(function(response) {
-                        statusChangeCallback(response);
-                    });
-                    FB.ui({
-                        method: 'share',
-                        href: 'https://developers.facebook.com/docs/'
-                        }, function(response){}
-                    );
-                        
-                    FB.login(function(response) {
-                        if (response.authResponse) {
-                            console.log('Welcome!  Fetching your information.... ');
-                            FB.api('/me', function(response) {
-                            console.log('Good to see you, ' + response.name + '.');
+        <!-- Main -->
+        <div id="main">
+            <h1 class="major">Spirale</h1>
+            <p>
+                le texte principal de la Spirale
+            </p>
+            <span class="image main"><img src="../../img/pic01.jpg" alt="" /></span>  
+            <h2 class="major">Développement</h2>
+            <p>
+                En développement...
+                le script ci dessous :
+                <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+                <script>
+                    window.fbAsyncInit = function() {
+                        FB.init({
+                            appId      : '1529858990784266',
+                            cookie     : true,
+                            xfbml      : true,
+                            version    : 'v15.0'
                         });
-                        } else {
-                            console.log('User cancelled login or did not fully authorize.');
-                        }
-                    });
+                        
+                        FB.AppEvents.logPageView();   
+                        FB.getLoginStatus(function(response) {
+                            statusChangeCallback(response);
+                        });
+                        FB.logout(function(response) {
+                            // user is now logged out
+                            console.log("logout");
+                        });
+                        FB.ui({
+                            method: 'share',
+                            href: 'https://developers.facebook.com/docs/'
+                            }, function(response){}
+                        );
+                            
+                        FB.login(function(response) {
+                            if (response.authResponse) {
+                                console.log('Welcome!  Fetching your information.... ');
+                                FB.api('/me', function(response) {
+                                console.log('Good to see you, ' + response.name + '.');
+                            });
+                            } else {
+                                console.log('User cancelled login or did not fully authorize.');
+                            }
+                        });
+                        
+                        FB.api(
+                            '/me',
+                            'GET',
+                            {"fields":"id,name"},
+                            function(response) {
+                                console.log('et donc voilà la réponse :', response);
+                            }
+                        );
+                    };
                     
-                    FB.api(
-                        '/me',
-                        'GET',
-                        {"fields":"id,name"},
-                        function(response) {
-                            console.log('et donc voilà la réponse :', response);
+                    (function(d, s, id){
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(id)) {return;}
+                        js = d.createElement(s); js.id = id;
+                        js.src = "https://connect.facebook.net/en_US/sdk.js";
+                        fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));
+                        function checkLoginState() {
+                        FB.getLoginStatus(function(response) {
+                            statusChangeCallback(response);
+                        });
                         }
-                    );
-                };
-                
-                (function(d, s, id){
-                    var js, fjs = d.getElementsByTagName(s)[0];
-                    if (d.getElementById(id)) {return;}
-                    js = d.createElement(s); js.id = id;
-                    js.src = "https://connect.facebook.net/en_US/sdk.js";
-                    fjs.parentNode.insertBefore(js, fjs);
-                    }(document, 'script', 'facebook-jssdk'));
-                    function checkLoginState() {
-                    FB.getLoginStatus(function(response) {
-                        statusChangeCallback(response);
-                    });
-                    }
 
-                function statusChangeCallback(response) {
-                    console.log('statusChangeCallback');
-                    console.log(response);
-                    if (response.status === 'connected') {
-                        console.log('Logged in and authenticated');
-                    } else {
-                        document.getElementById('status').innerHTML = 'Please log ' +
-                        'into this app.';
+                    function statusChangeCallback(response) {
+                        console.log('statusChangeCallback');
+                        console.log(response);
+                        if (response.status === 'connected') {
+                            console.log('Logged in and authenticated');
+                        } else {
+                            document.getElementById('status').innerHTML = 'Please log ' +
+                            'into this app.';
+                        }
                     }
-                }
-            </script>
-            
-            <fb:login-button 
-                scope="public_profile,email"
-                onlogin="checkLoginState();">
-            </fb:login-button>
-        </p>
-</div>
+                </script>
+                
+                <fb:login-button 
+                    scope="public_profile,email"
+                    onlogin="checkLoginState();">
+                </fb:login-button>
+            </p>
+        </div>      
+    </div>   
+</body>
 
 <!-- Footer -->
 <footer id="footer">
