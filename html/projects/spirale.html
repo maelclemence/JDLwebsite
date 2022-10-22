@@ -42,16 +42,41 @@
             <script>
                 window.fbAsyncInit = function() {
                     FB.init({
-                    appId      : '1529858990784266',
-                    cookie     : true,
-                    xfbml      : true,
-                    version    : 'v15.0'
+                        appId      : '1529858990784266',
+                        cookie     : true,
+                        xfbml      : true,
+                        version    : 'v15.0'
                     });
                     
                     FB.AppEvents.logPageView();   
                     FB.getLoginStatus(function(response) {
                         statusChangeCallback(response);
                     });
+                    FB.ui({
+                        method: 'share',
+                        href: 'https://developers.facebook.com/docs/'
+                        }, function(response){}
+                    );
+                        
+                    FB.login(function(response) {
+                        if (response.authResponse) {
+                            console.log('Welcome!  Fetching your information.... ');
+                            FB.api('/me', function(response) {
+                            console.log('Good to see you, ' + response.name + '.');
+                        });
+                        } else {
+                            console.log('User cancelled login or did not fully authorize.');
+                        }
+                    });
+                    
+                    FB.api(
+                        '/me',
+                        'GET',
+                        {"fields":"id,name"},
+                        function(response) {
+                            console.log('et donc voilà la réponse :', response);
+                        }
+                    );
                 };
                 
                 (function(d, s, id){
@@ -71,7 +96,7 @@
                     console.log('statusChangeCallback');
                     console.log(response);
                     if (response.status === 'connected') {
-                        testAPI();
+                        console.log('Logged in and authenticated');
                     } else {
                         document.getElementById('status').innerHTML = 'Please log ' +
                         'into this app.';
