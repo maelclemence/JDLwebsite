@@ -26,60 +26,53 @@
 <!-- Add your site or application content here -->
 
 <body class="is-preload">
-    
-    <!-- Wrapper -->
-    <div id="wrapper">
 
     <!-- Main -->
     <div id="main">
-            <article id="toOpen" class="full_articles">
-                <h1 class="major">Spirale</h1>
-                <p>
-                   le texte principal de la Spirale
-                </p>
-                <span class="image main"><img src="../../img/pic01.jpg" alt="" /></span>  
-                <h2 class="major">Développement</h2>
-                <p>
-                    En développement...
-                    le script ci dessous :
-                    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>                    <script>
-                        window.fbAsyncInit = function() {
-                          FB.init({
-                            appId      : '1529858990784266',
-                            cookie     : true,
-                            xfbml      : true,
-                            version    : 'v15.0'
-                          });
-                            
-                          FB.AppEvents.logPageView();   
-                          FB.getLoginStatus(function(response) {
-                                statusChangeCallback(response);
-                            });
-                        };
-                      
-                        (function(d, s, id){
-                           var js, fjs = d.getElementsByTagName(s)[0];
-                           if (d.getElementById(id)) {return;}
-                           js = d.createElement(s); js.id = id;
-                           js.src = "https://connect.facebook.net/en_US/sdk.js";
-                           fjs.parentNode.insertBefore(js, fjs);
-                         }(document, 'script', 'facebook-jssdk'));
-                         function checkLoginState() {
-                            FB.getLoginStatus(function(response) {
-                                statusChangeCallback(response);
-                            });
-                            }
-                      </script>
+        <h1 class="major">Spirale</h1>
+        <p>
+            le texte principal de la Spirale
+        </p>
+        <span class="image main"><img src="../../img/pic01.jpg" alt="" /></span>  
+        <h2 class="major">Développement</h2>
+        <p>
+            En développement...
+            le script ci dessous :
+            <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+            <script>
+                window.fbAsyncInit = function() {
+                    FB.init({
+                    appId      : '1529858990784266',
+                    cookie     : true,
+                    xfbml      : true,
+                    version    : 'v15.0'
+                    });
                     
-                    <fb:login-button 
-                        scope="public_profile,email"
-                        onlogin="checkLoginState();">
-                    </fb:login-button>
-                </p>
-
+                    FB.AppEvents.logPageView();   
+                    FB.getLoginStatus(function(response) {
+                        statusChangeCallback(response);
+                    });
+                };
                 
-            </article>
-    </div>
+                (function(d, s, id){
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) {return;}
+                    js = d.createElement(s); js.id = id;
+                    js.src = "https://connect.facebook.net/en_US/sdk.js";
+                    fjs.parentNode.insertBefore(js, fjs);
+                    }(document, 'script', 'facebook-jssdk'));
+                    function checkLoginState() {
+                    FB.getLoginStatus(function(response) {
+                        statusChangeCallback(response);
+                    });
+                    }
+                </script>
+            
+            <fb:login-button 
+                scope="public_profile,email"
+                onlogin="checkLoginState();">
+            </fb:login-button>
+        </p>
 </div>
 
 <!-- Footer -->
