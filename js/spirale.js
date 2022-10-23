@@ -120,7 +120,7 @@ function showRandomDepop(depop) {
     //     <li class="list-group-item">Date de fin : ${article.slug}</li>
     // </ul>
     // `
-        let annonce = showArticleDetails(article.id, article.price.priceAmount, article.slug, "pas d'image")
+        let annonce = showArticleDetails(article.id, article.price.priceAmount, article.slug, article.previe[150])
         document.getElementById('depop').innerHTML += annonce;
     }
 }
@@ -246,7 +246,8 @@ function showArticleDetails(articleTitle, articlePrice, articleDescription, arti
 
         <p class="pb-3 mb-0 small lh-sm border-bottom">
             <strong class="d-block text-gray-dark">Image</strong>
-            ${articleImage}
+            <img src=${articleImage} alt="Image de l'article">
+            
         </p>
         </div>
     </div>`
