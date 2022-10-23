@@ -55,8 +55,11 @@ async function fetchData() {
     const anibis = fetchFromAnibis();
     const ricardo = fetchFromRicardo();
     const depop = fetchFromDepop();
-    const result = [await anibis, await ricardo, await depop];
-
+    const fetched_results = [await anibis, await ricardo, await depop];
+    const results = fetched_results.flat();
+    for (var i = 0; i < results.length; i++) {
+        addArticle(results[i]);
+    }
 }
 
 function addArticle(article) {
