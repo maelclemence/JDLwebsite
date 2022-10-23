@@ -89,8 +89,8 @@ function addArticle(article) {
               <p class="card-text">${article.title}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <a class="btn btn-success" href="${article.url}" target="_blank">View</a>
-                  <a class="btn btn-success" href="https://jeudeloie.ch" target="_blank">JDL</a>
+                  <a class="btn btn-primary my-2" href="${article.url}" target="_blank">View</a>
+                  <a class="btn btn-secondary my-2" href="https://jeudeloie.ch" target="_blank">JDL</a>
                 </div>
                 <small class="text-muted">${article.platform}</small>
               </div>
