@@ -4,17 +4,23 @@ function showRandomAnibis(anibis) {
     var arrayLength = anibis.length;
     for (var i = 0; i < arrayLength; i++) {
         article = anibis[i];
-        const baseUrl = article.imageData.baseUrl;
-        console.log("baseUrl : ", baseUrl)
-        const stuff   =  "/?380x285/0/60/";
-        console.log("stuff : ", stuff)
-        const image   = article.imageData.images[0].substring(9);
-        console.log("image : ", image)
+        var image = "";
+        try {
+            const baseUrl = article.imageData.baseUrl;
+            console.log("baseUrl : ", baseUrl)
+            const size   =  "/?380x285/0/60/";
+            console.log("stuff : ", size)
+            const first_image   = article.imageData.images[0].substring(9);
+            console.log("image : ", first_image)
+            image = baseUrl + size + first_image;
+        } catch (error) {
+            console.log("error : ", error)
+        }
         result.push({
             "title": article.title,
             "price": article.price,
             "name": article.category.name,
-            "image": "",
+            "image": image,
             "url": `https://www.anibis.ch${article.url}`, 
             "platform": "anibis"
         })
