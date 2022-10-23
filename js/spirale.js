@@ -4,11 +4,12 @@ function showRandomAnibis(anibis) {
     var arrayLength = anibis.length;
     for (var i = 0; i < arrayLength; i++) {
         article = anibis[i];
+        // const image = `${article.imageData.baseUrl} + "/?380x285/0/60/" + ${article.imageData.images[0].substring(9)}`;
         result.push({
             "title": article.title,
             "price": article.price,
             "name": article.category.name,
-            "image": `${article.imageData.baseUrl} + "/?380x285/0/60/" + ${article.imageData.images[0].substring(9)}`,
+            "image": "",
             "url": `https://www.anibis.ch/${article.url}`, 
             "platform": "anibis"
         })
