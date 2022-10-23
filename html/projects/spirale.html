@@ -15,7 +15,7 @@
     <body>
         <!-- Main -->
         <div>
-            <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <nav class="navbar navbar-expand-md navbar-light bg-light">
                 <div class="container-fluid">
                 <a class="navbar-brand" href="#">Spirale</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,17 +49,16 @@
                 <div id="profile"> </div>
             </div>
             <div class="container">
-                <h3 id="rdm_activity">Click on the button to get a random activity</h3>
-                <h3 id="activity"></h3>
-            </div>
-            <div class="container">
                 <div class="button">
-                    <button type="button" class="btn btn-primary" onclick="fetchData()">Get Data</button>
+                    <button type="button" class="btn btn-primary" onclick="fetchData()">Get random activity motivation</button>
                     <button type="button" class="btn btn-primary" onclick="fetchFromAnibis()">Get Data from Anibis</button>
                 </div>
             </div>
             <div class="container">
                 <div id="anibis"></div>
+            </div>
+            <div class="container">
+                <h3 id="activity"></h3>
             </div>
             <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
             <script>
