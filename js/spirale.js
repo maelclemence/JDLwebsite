@@ -1,17 +1,21 @@
 function showRandomAnibis(anibis) {
-    console.log("anibis : ", anibis)
-    return [{
-        "title": anibis.title,
-        "price": anibis.price,
-        "name": anibis.category.name,
-        "image": "",
-        "url": "https://www.anibis.ch/fr", 
-        "platform": "anibis"
-    }]
+    var result = [];
+    var arrayLength = anibis.length;
+    for (var i = 0; i < arrayLength; i++) {
+        article = anibis[i];
+        result.push({
+            "title": anibis.title,
+            "price": anibis.price,
+            "name": anibis.category.name,
+            "image": `${anibis.imageData.baseUrl} + "/?380x285/0/60/" + ${anibis.imageData.images[0].substring(9)}`,
+            "url": `https://www.anibis.ch/${anibis.url}`, 
+            "platform": "anibis"
+        })
+
+    return result;
 }
 
 function showRandomRicardo(ricardo) {
-    console.log("Ricardo ", ricardo)
     var result = [];
     var arrayLength = ricardo.length;
     for (var i = 0; i < arrayLength; i++) {
@@ -29,7 +33,6 @@ function showRandomRicardo(ricardo) {
 }
 
 function showRandomDepop(depop) {
-    console.log("Depop : ", depop)
     result = [];
     var arrayLength = depop.length;
     for (var i = 0; i < arrayLength; i++) {
@@ -103,7 +106,7 @@ async function fetchFromAnibis() {
                                 "credentials": "omit"
                             })
                             .then(response => response.json())
-                            .then(data => showRandomAnibis(data.listings[0]))
+                            .then(data => showRandomAnibis(data.listings))
 }
 
 async function fetchFromRicardo() {
