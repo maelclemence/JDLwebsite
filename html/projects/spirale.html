@@ -154,13 +154,23 @@
 
                 function showRandomRicardo(ricardo) {
                     console.log(ricardo)
-                    let annonce = `
+                    var arrayLength = ricardo.length;
+                    document.getElementById('ricardo').innerHTML = "<h3>Articles Ricardo</h3>";
+                    for (var i = 0; i < arrayLength; i++) {
+                        console.log(ricardo[i]);
+                        article = ricardo[i]
+                        let annonce = `
                         <ul class="list-group">
-                            <li class="list-group-item">Annonce Ricaro</li> 
-                            <li class="list-group-item">Catégorie: ${ricardo.displayName}</li> 
+                            <li class="list-group-item">Titre : ${article.title}</li> 
+                            <li class="list-group-item">promoOption: ${article.promoOption}</li> 
+                            <li class="list-group-item">Achat instantané: ${article.buyNowPrice}</li> 
+                            <li class="list-group-item">Date de fin: ${article.enDate}</li> 
+                            <li class="list-group-item">Prix: ${article.bidPrice}</li> 
+                            <li class="list-group-item">Enchères: ${article.bidsCount}</li> 
                         </ul>
-                    `
-                    document.getElementById('ricardo').innerHTML = annonce;
+                        `
+                        document.getElementById('ricardo').innerHTML += annonce;
+                    }
                 }
 
                 function logout() {
