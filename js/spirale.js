@@ -10,7 +10,7 @@ function showRandomAnibis(anibis) {
             "price": article.price,
             "name": article.category.name,
             "image": "",
-            "url": `https://www.anibis.ch/${article.url}`, 
+            "url": `https://www.anibis.ch${article.url}`, 
             "platform": "anibis"
         })
     }
