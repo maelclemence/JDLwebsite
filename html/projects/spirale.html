@@ -34,7 +34,7 @@
                         <li>
                             <fb:login-button 
                                 id="fb-login-button"
-                                scope="public_profile,email,user_birthday"
+                                scope="public_profile,email,user_birthday,user_location"
                                 onlogin="checkLoginState();">
                             </fb:login-button>
                         </li>
@@ -85,11 +85,24 @@
                 }
 
                 function testAPI(){
-                    FB.api('/me?fields=name,first_name,last_name,email,birthday', function(response) {
+                    FB.api('/me?fields=name,first_name,last_name,email,birthday,location', function(response) {
                         if (response && !response.error) {
-                            console.log(response);
+                            //console.log(response);
+                            buildProfile(response);
                         }
                     });
+                }
+
+                function buildProfile(user){
+                    let profile = `
+                        <h3>${user.name}</h3>
+                        <ul class="list-group">
+                            <li class="list-group-item">User ID: ${user.id}</li> 
+                            <li class="list-group-item">Email: ${user.email}</li>    
+                            <li class="list-group-item">Birthday : ${user.birthday}</li>    
+                            <li class="list-group-item">Location: ${user.location}</li>       
+                        </ul>
+                    `;
                 }
 
                 function setElements(isLoggedIn) {
