@@ -133,11 +133,11 @@
                 }
 
                 async function fetchData() {
+
                     const response = 
-                        fetch("https://www.ricardo.ch/marketplace-spa/api/pdp/fr/1192685648?isPlanned=false", {
+                        fetch("https://jdl-cors.herokuapp.com/https://www.ricardo.ch/marketplace-spa/api/pdp/fr/1192685648?isPlanned=false", {
                             "headers": {
                                 "accept": "application/json, text/plain, */*",
-                                "Access-Control-Allow-Origin": "*",
                                 "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,fr;q=0.7",
                                 "sec-ch-ua": "\"Chromium\";v=\"106\", \"Google Chrome\";v=\"106\", \"Not;A=Brand\";v=\"99\"",
                                 "sec-ch-ua-mobile": "?0",
@@ -162,3 +162,4 @@
         </div>      
     </body>
 </html>
+<!-- https://github.com/das-jishu/add-cors -->
