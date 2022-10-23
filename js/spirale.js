@@ -206,8 +206,6 @@ async function fetchFromDepop() {
         "headers": {
           "accept": "application/json, text/plain, */*",
           "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,fr;q=0.7",
-          "depop-search-id": "25bae4e3-e05d-4a21-8c9b-8c543d1ef782",
-          "depop-session-id": "845fc889-42db-4430-a720-96292fd9d55e",
           "sec-ch-ua": "\"Chromium\";v=\"106\", \"Google Chrome\";v=\"106\", \"Not;A=Brand\";v=\"99\"",
           "sec-ch-ua-mobile": "?0",
           "sec-ch-ua-platform": "\"Linux\"",
