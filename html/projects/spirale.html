@@ -49,6 +49,10 @@
                 <div id="profile"> </div>
             </div>
             <div class="container">
+                <h3 id="rdm_activity">Click on the button to get a random activity</h3>
+                <h3 id="activity"></h3>
+            </div>
+            <div class="container">
                 <div class="button">
                     <button type="button" class="btn btn-primary" onclick="fetchData()">Get Data</button>
                 </div>
@@ -125,6 +129,10 @@
                     }
                 }
 
+                function showRandomActivity(activity) {
+                    document.getElementById('activity').innerHTML = randomActivity;
+                }
+
                 function logout() {
                     FB.logout(function(response) {
                         setElements(false);
@@ -152,10 +160,11 @@
                             "method": "GET",
                             "mode": "cors",
                             "credentials": "omit"
-                            }).then(response => response.json())
-                            .then(data => console.log(data));
-                    console.log(response.activity);
-                    console.log(response.type);
+                            })
+                            .then(response => response.json())
+                            .then(data => console.log(data))
+                            .then(data => showRandomActivity(data.activity))
+                            .catch(err => console.log(err));
                 }
 
             </script>
