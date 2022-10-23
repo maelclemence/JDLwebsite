@@ -43,74 +43,76 @@
                 </div>
             </nav>
 
+            <h1>Spirale</h1>
             <div class="container">
                 <h3 id="heading">Log in to view your profile</h3>
                 <div id="profile"> </div>
             </div>
+            <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+            <script>
+                window.fbAsyncInit = function() {
+                    FB.init({
+                        appId      : '1529858990784266',
+                        cookie     : true,
+                        xfbml      : true,
+                        version    : 'v15.0'
+                    });
+                };
+                
+                (function(d, s, id){
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) {return;}
+                    js = d.createElement(s); js.id = id;
+                    js.src = "https://connect.facebook.net/en_US/sdk.js";
+                    fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
 
-            <h1>Spirale</h1>
-            <p>
-                le texte principal de la Spirale
-            </p>
-            <span><img src="../../img/pic01.jpg" alt="" /></span>  
-            <h2>Développement</h2>
-            <p>
-                En développement...
-                le script ci dessous :
-                <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
-                <script>
-                    window.fbAsyncInit = function() {
-                        FB.init({
-                            appId      : '1529858990784266',
-                            cookie     : true,
-                            xfbml      : true,
-                            version    : 'v15.0'
-                        });
-                    };
-                    
-                    (function(d, s, id){
-                        var js, fjs = d.getElementsByTagName(s)[0];
-                        if (d.getElementById(id)) {return;}
-                        js = d.createElement(s); js.id = id;
-                        js.src = "https://connect.facebook.net/en_US/sdk.js";
-                        fjs.parentNode.insertBefore(js, fjs);
-                    }(document, 'script', 'facebook-jssdk'));
+                function statusChangeCallback(response) {
+                    if (response.status === 'connected') {
+                        console.log('Logged in and authenticated');
+                        setElements(true);
+                        testAPI();
+                    } else {
+                        console.log('Not authenticated');
+                        setElements(false);
+                    }
+                }
 
-                    function statusChangeCallback(response) {
-                        if (response.status === 'connected') {
-                            console.log('Logged in and authenticated');
-                            setElements(true);
-                        } else {
-                            console.log('Not authenticated');
-                            setElements(false);
+                function checkLoginState() {
+                    FB.getLoginStatus(function(response) {
+                        statusChangeCallback(response);
+                    });
+                }
+
+                function testAPI(){
+                    FB.api('/me?fields=name,first_name,last_name,email,birthday', function(response) {
+                        if (response && !response.error) {
+                            console.log(response);
                         }
-                    }
+                    });
+                }
 
-                    function checkLoginState() {
-                        FB.getLoginStatus(function(response) {
-                            statusChangeCallback(response);
-                        });
-                    }
+                function setElements(isLoggedIn) {
+                    if (isLoggedIn) {
+                        document.getElementById('logout').style.display = "block";
+                        document.getElementById('profile').style.display = "block";
+                        document.getElementById('fb-login-button').style.display = "none";
+                        document.getElementById('heading').style.display = "none";
+                    } else {
+                        document.getElementById('logout').style.display = "none";
+                        document.getElementById('fb-login-button').style.display = "block";
+                        document.getElementById('profile').style.display = "none";
+                        document.getElementById('heading').style.display = "block";
 
-                    function setElements(isLoggedIn) {
-                        if (isLoggedIn) {
-                            document.getElementById('logout').style.display = "block";
-                            document.getElementById('profile').style.display = "block";
-                            document.getElementById('fb-login-button').style.display = "none";
-                        } else {
-                            document.getElementById('logout').style.display = "none";
-                            document.getElementById('fb-login-button').style.display = "block";
-                            document.getElementById('profile').style.display = "none";
-                        }
                     }
+                }
 
-                    function logout() {
-                        FB.logout(function(response) {
-                            setElements(false);
-                        });
-                    }
-                </script>
-            </p>
+                function logout() {
+                    FB.logout(function(response) {
+                        setElements(false);
+                    });
+                }
+            </script>
         </div>      
     </body>
 </html>
