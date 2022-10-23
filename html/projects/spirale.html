@@ -162,7 +162,6 @@
                             "credentials": "omit"
                             })
                             .then(response => response.json())
-                            .then(data => console.log(data))
                             .then(data => showRandomActivity(data.activity))
                             .catch(err => console.log(err));
                 }
