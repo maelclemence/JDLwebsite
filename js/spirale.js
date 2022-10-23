@@ -109,7 +109,7 @@ function showRandomRicardo(ricardo) {
 function showRandomDepop(depop) {
     console.log(depop)
     var arrayLength = depop.length;
-    document.getElementById('depop').innerHTML = "<h3>Articles Facebook</h3>";
+    document.getElementById('depop').innerHTML = "<h3>Articles Depop</h3>";
     for (var i = 0; i < arrayLength; i++) {
         console.log(depop[i]);
         article = depop[i]
@@ -218,6 +218,6 @@ async function fetchFromDepop() {
         "credentials": "omit"
       })
         .then(response => response.json())
-        .then(data => showRandomDepop(data))
+        .then(data => showRandomDepop(data.products))
         .catch(err => console.log(err));
 }
