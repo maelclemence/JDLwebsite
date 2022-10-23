@@ -47,19 +47,16 @@ function showRandomDepop(depop) {
 }
 
 async function fetchData() {
-    Promise.all([fetchFromAnibis(), fetchFromRicardo(), fetchFromDepop()])
+    await Promise.all([fetchFromAnibis(), fetchFromRicardo(), fetchFromDepop()])
         .then(values => {
             console.log("Values : ", values)
 
         });
-        
-    // console.log('fetchData anibis : ', anibis);
-    // console.log('fetchData ricardo : ', ricardo);
-    // console.log('fetchData depop : ', depop);
-    // result = anibis.concat(ricardo, depop);
-    // for (var i = 0; i < result.length; i++) {
-    //     addArticle(result[i]);
-    // }
+    const anibis = fetchFromAnibis();
+    const ricardo = fetchFromRicardo();
+    const depop = fetchFromDepop();
+    const result = [await anibis, await ricardo, await depop];
+
 }
 
 function addArticle(article) {
@@ -86,7 +83,7 @@ function addArticle(article) {
 }
 
 async function fetchFromAnibis() {
-    const response = await fetch("https://attach-cors.herokuapp.com/https://api.anibis.ch/v4/fr/search/listings?cun=toutes-les-rubriques&fcun=toutes-les-rubriques&fts=clavier&pr=1", {
+    return fetch("https://attach-cors.herokuapp.com/https://api.anibis.ch/v4/fr/search/listings?cun=toutes-les-rubriques&fcun=toutes-les-rubriques&fts=clavier&pr=1", {
                                 "headers": {
                                     "accept": "application/json",
                                     "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,fr;q=0.7",
@@ -104,11 +101,10 @@ async function fetchFromAnibis() {
                             })
                             .then(response => response.json())
                             .then(data => showRandomAnibis(data.listings[0]))
-                            .catch(err => console.log(err));;
 }
 
 async function fetchFromRicardo() {
-    const response = await fetch("https://attach-cors.herokuapp.com/https://www.ricardo.ch/api/mfa/categories/38399/promo-offers", {
+    return fetch("https://attach-cors.herokuapp.com/https://www.ricardo.ch/api/mfa/categories/38399/promo-offers", {
                                     "headers": {
                                         "accept": "application/json, text/plain, */*",
                                         "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,fr;q=0.7",
@@ -125,11 +121,10 @@ async function fetchFromRicardo() {
                             })
                             .then(response => response.json())
                             .then(data => showRandomRicardo(data))
-                            .catch(err => console.log(err));;
 }
 
 async function fetchFromDepop() {
-    const response = await fetch("https://attach-cors.herokuapp.com/https://webapi.depop.com/api/v2/search/products/?categories=9&itemsPerPage=24&country=gb&currency=GBP&sort=relevance", {
+    return fetch("https://attach-cors.herokuapp.com/https://webapi.depop.com/api/v2/search/products/?categories=9&itemsPerPage=24&country=gb&currency=GBP&sort=relevance", {
         "headers": {
           "accept": "application/json, text/plain, */*",
           "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,fr;q=0.7",
@@ -146,5 +141,4 @@ async function fetchFromDepop() {
       })
         .then(response => response.json())
         .then(data => showRandomDepop(data.products))
-        .catch(err => console.log(err));
 }
