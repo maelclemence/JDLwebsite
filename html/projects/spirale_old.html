@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>Spirale</title>
+        <link rel="stylesheet" href="https://bootswatch.com/5/flatly/bootstrap.min.css">
+        <style media="screen">
+            #profile, #logout {display: none;}
+        </style>
+    </head>
+
+    <!-- Add your site or application content here -->
+
+    <body>
+        <!-- Main -->
+        <div>
+            <nav class="navbar navbar-expand-md navbar-light bg-light">
+                <div class="container-fluid">
+                <a class="navbar-brand" href="#">Spirale</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a aria-current="page" href="#">Home</a>
+                    </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a id="logout" href="#" onclick="logout()">Logout</a>
+                        </li>
+                        <li>
+                            <fb:login-button 
+                                id="fb-login-button"
+                                scope="public_profile,email,user_birthday,user_location"
+                                onlogin="checkLoginState();">
+                            </fb:login-button>
+                        </li>
+                    </ul>
+                </div>
+                </div>
+            </nav>
+
+            <h1>Spirale</h1>
+            <div class="container">
+                <div class="button">
+                    <button type="button" class="btn btn-primary" onclick="fetchData()">Get random activity motivation</button>
+                    <button type="button" class="btn btn-primary" onclick="fetchFromAnibis()">Get Data from Anibis</button>
+                    <button type="button" class="btn btn-primary" onclick="fetchFromRicardo()">Get Data from Ricardo</button>
+                    <button type="button" class="btn btn-primary" onclick="fetchFromDepop()">Get Data from Depop</button>
+                </div>
+            </div>
+            <div class="container">
+                <h3 id="activity"></h3>
+                <div id="anibis"></div>
+                <div id="ricardo"></div>
+                <div id="depop"></div>
+            </div>            
+        </div>   
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+        <script src="../../js/spirale.js"></script>
+    </body>
+</html>
+<!-- https://github.com/das-jishu/add-cors -->
