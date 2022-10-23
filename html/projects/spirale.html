@@ -58,6 +58,10 @@
                     <button type="button" class="btn btn-primary" onclick="fetchFromAnibis()">Get Data from Anibis</button>
                 </div>
             </div>
+            <div class="container">
+                <h3 id="heading">Annonce Anibis</h3>
+                <div id="anibis"></div>
+            </div>
             <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
             <script>
                 window.fbAsyncInit = function() {
@@ -136,6 +140,15 @@
 
                 function showRandomAnibis(anibis) {
                     console.log(anibis)
+                    let annonce = `
+                        <h1>${anibis.title}</h1>
+                        <h3>${anibis.category.name}</h3>
+                        <ul class="list-group">
+                            <li class="list-group-item">Détails: ${anibis.detailsExtraLarge[0]}</li> 
+                            <li class="list-group-item">Prix: ${anibis.price}</li>    
+                        </ul>
+                    `
+                    document.getElementById('anibis').innerHTML = annonce;
                 }
 
                 function logout() {
