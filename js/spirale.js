@@ -120,7 +120,7 @@ function showRandomDepop(depop) {
     //     <li class="list-group-item">Date de fin : ${article.slug}</li>
     // </ul>
     // `
-        let annonce = showArticleDetails(article.id, article.price.priceAmount, article.slug, article.previe[150])
+        let annonce = showArticleDetails(article.id, article.price.priceAmount, article.slug, article.preview["150"])
         document.getElementById('depop').innerHTML += annonce;
     }
 }
