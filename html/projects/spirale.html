@@ -1,162 +1,112 @@
 <!doctype html>
 <html>
 
-<head>
-    <meta charset="utf-8">
-    <title>Spirale</title>
-    <link rel="stylesheet" href="https://bootswatch.com/5/cyborg/bootstrap.min.css">
-    <style media="screen">
-        #profile{display: none;}
-    </style>
-</head>
+    <head>
+        <meta charset="utf-8">
+        <title>Spirale</title>
+        <link rel="stylesheet" href="https://bootswatch.com/5/cyborg/bootstrap.min.css">
+        <style media="screen">
+            #profile, #logout {display: none;}
+        </style>
+    </head>
 
-<!-- Add your site or application content here -->
+    <!-- Add your site or application content here -->
 
-<body>
-    <!-- Main -->
-    <div>
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">Spirale</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                  <li class="nav-item">
-                    <a aria-current="page" href="#">Home</a>
-                  </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <fb:login-button 
-                            id="fb-login-button"
-                            scope="public_profile,email,user_birthday"
-                            onlogin="checkLoginState();">
-                        </fb:login-button>
+    <body>
+        <!-- Main -->
+        <div>
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+                <div class="container-fluid">
+                <a class="navbar-brand" href="#">Spirale</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a aria-current="page" href="#">Home</a>
                     </li>
-                </ul>
-              </div>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a id="logout" href="#" onclick="logout()">Logout</a>
+                        </li>
+                        <li>
+                            <fb:login-button 
+                                id="fb-login-button"
+                                scope="public_profile,email,user_birthday"
+                                onlogin="checkLoginState();">
+                            </fb:login-button>
+                        </li>
+                    </ul>
+                </div>
+                </div>
+            </nav>
+
+            <div class="container">
+                <h3 id="heading">Log in to view your profile</h3>
+                <div id="profile"> </div>
             </div>
-        </nav>
 
-        <div class="container">
-            <h3 id="heading">Log in to view your profile</h3>
-            <div id="profile"> </div>
-        </div>
+            <h1>Spirale</h1>
+            <p>
+                le texte principal de la Spirale
+            </p>
+            <span><img src="../../img/pic01.jpg" alt="" /></span>  
+            <h2>Développement</h2>
+            <p>
+                En développement...
+                le script ci dessous :
+                <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+                <script>
+                    window.fbAsyncInit = function() {
+                        FB.init({
+                            appId      : '1529858990784266',
+                            cookie     : true,
+                            xfbml      : true,
+                            version    : 'v15.0'
+                        });
+                    };
+                    
+                    (function(d, s, id){
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(id)) {return;}
+                        js = d.createElement(s); js.id = id;
+                        js.src = "https://connect.facebook.net/en_US/sdk.js";
+                        fjs.parentNode.insertBefore(js, fjs);
+                    }(document, 'script', 'facebook-jssdk'));
 
-        <h1>Spirale</h1>
-        <p>
-            le texte principal de la Spirale
-        </p>
-        <span><img src="../../img/pic01.jpg" alt="" /></span>  
-        <h2>Développement</h2>
-        <p>
-            En développement...
-            le script ci dessous :
-            <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
-            <script>
-                window.fbAsyncInit = function() {
-                    FB.init({
-                        appId      : '1529858990784266',
-                        cookie     : true,
-                        xfbml      : true,
-                        version    : 'v15.0'
-                    });
-                };
-                
-                (function(d, s, id){
-                    var js, fjs = d.getElementsByTagName(s)[0];
-                    if (d.getElementById(id)) {return;}
-                    js = d.createElement(s); js.id = id;
-                    js.src = "https://connect.facebook.net/en_US/sdk.js";
-                    fjs.parentNode.insertBefore(js, fjs);
-                }(document, 'script', 'facebook-jssdk'));
-
-                function statusChangeCallback(response) {
-                    console.log('statusChangeCallback');
-                    console.log(response);
-                    if (response.status === 'connected') {
-                        console.log('Logged in and authenticated');
-                        setElements(true);
-                    } else {
-                        console.log('Not authenticated');
-                        setElements(false);
+                    function statusChangeCallback(response) {
+                        console.log('statusChangeCallback');
+                        console.log(response);
+                        if (response.status === 'connected') {
+                            console.log('Logged in and authenticated');
+                            setElements(true);
+                        } else {
+                            console.log('Not authenticated');
+                            setElements(false);
+                        }
                     }
-                }
 
-                function checkLoginState() {
-                    FB.getLoginStatus(function(response) {
-                        statusChangeCallback(response);
-                    });
-                }
-
-                function setElements(isLoggedIn) {
-                    if (isLoggedIn) {
-                        document.getElementById('profile').style.display = "block";
-                        document.getElementById('fb-login-button').style.display = "none";
-                    } else {
-                        document.getElementById('fb-login-button').style.display = "block";
-                        document.getElementById('profile').style.display = "none";
+                    function checkLoginState() {
+                        FB.getLoginStatus(function(response) {
+                            statusChangeCallback(response);
+                        });
                     }
-                }
-            </script>
-        </p>
-    </div>      
-</body>
 
-<!-- Footer -->
-<footer id="footer">
-    <p class="copyright">&copy; Maeul & Alexis.</p>
-</footer>
-
-</div>
-
-<!-- BG -->
-<div id="bg"></div>
-
-<!-- Scripts -->
-<script src="../../js/jquery.min.js"></script>
-<script src="../../js/browser.min.js"></script>
-<script src="../../js/breakpoints.min.js"></script>
-<script src="../../js/util.js"></script>
-<script src="../../js/main.js"></script>
-
-</body>
-
+                    function setElements(isLoggedIn) {
+                        if (isLoggedIn) {
+                            document.getElementById('logout').style.display = "block";
+                            document.getElementById('profile').style.display = "block";
+                            document.getElementById('fb-login-button').style.display = "none";
+                        } else {
+                            document.getElementById('logout').style.display = "none";
+                            document.getElementById('fb-login-button').style.display = "block";
+                            document.getElementById('profile').style.display = "none";
+                        }
+                    }
+                </script>
+            </p>
+        </div>      
+    </body>
 </html>
-
-
-<!-- FB.AppEvents.logPageView();   
-FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-});
-FB.logout(function(response) {
-    // user is now logged out
-    console.log("logout");
-});
-FB.ui({
-    method: 'share',
-    href: 'https://developers.facebook.com/docs/'
-    }, function(response){}
-);
-    
-FB.login(function(response) {
-    if (response.authResponse) {
-        console.log('Welcome!  Fetching your information.... ');
-        FB.api('/me', function(response) {
-            console.log('Good to see you, ' + response.name + '.');
-    });
-    } else {
-        console.log('User cancelled login or did not fully authorize.');
-    }
-});
-
-FB.api(
-    '/me',
-    'GET',
-    {"fields":"id,name"},
-    function(response) {
-        console.log('et donc voilà la réponse :', response);
-    }
-); -->
