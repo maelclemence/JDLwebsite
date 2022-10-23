@@ -284,7 +284,8 @@ section, summary, time, mark, audio, video {
     }
     
     h1, h2, h4, h5, h6 {
-      color: #d13636;
+      color: white ;
+      background-color: red ;
       font-weight: 600;
       line-height: 1.5;
       margin: 0 0 1rem 0;

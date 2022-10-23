@@ -222,6 +222,30 @@ async function fetchFromDepop() {
         .catch(err => console.log(err));
 }
 
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+  
+  function setRandomColor() {
+    $("#colorpad").css("background-color", getRandomColor());
+}
+
+const setBg = () => {
+    const randomColor = Math.floor(Math.random()*16777215).toString(16);
+    document.body.style.color = "#" + randomColor;
+    color.innerHTML = "#" + randomColor;
+  }
+  
+  genNew.addEventListener("click", setBg);
+  setBg();
+
+
+
 function showArticleDetails(articleTitle, articlePrice, articleDescription, articleImage){
     return `<div class="my-3 p-3 bg-body rounded shadow-sm">
         <h6 class="border-bottom pb-2 mb-0">${articleTitle}</h6>

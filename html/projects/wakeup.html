@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html onclick="fetchData()" >
 <head>
     <meta charset="utf-8">
     <title>Mauvaise journée?</title>
@@ -11,25 +11,16 @@
     <meta property="og:description" content="Le motivateur du Jeu de l'oie te permet à tout instant de te ressourcer et de 
     planifier des activités pour ne pas mourir d'ennui.">
     <meta property="og:title" content="le jeu de l'oie chercher de la motivation">
-
+ 
     <link rel="shortcut icon" href="../../img/favicon_oie.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="../../img/favicon_oie.ico">
 
-   <!-- <link rel="stylesheet" href="../../css/normalize.css">-->
-    <!--<link rel="stylesheet" href="../../css/main.css">-->
-    <link rel="stylesheet" href="../../css/timon.css">
+    <link rel="stylesheet" href="https://bootswatch.com/5/minty/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/normalize.css">
+    <link rel="stylesheet" href="../../css/main copy.css">
     <noscript><link rel="stylesheet" href="../../css/noscript.css" /></noscript>
-
-    <meta name="theme-color" content="#4285f4"/>
-
-        <meta charset="utf-8">
-        <title> wake up </title>
-        <link rel="stylesheet" href="https://bootswatch.com/5/minty/bootstrap.min.css">
-        <style media="screen">
-            #profile, #logout {display: none;}
-        </style>
-        
-        <style>
+   
+    <style>
             body {
               background-image: url('../../img/oie-goose.gif');
               background-repeat: no-repeat;
@@ -39,53 +30,29 @@
             </style>
     </head>
 
+
+
     <!-- Add your site or application content here -->
 
-    <body>
+    <body onclick="fetchData(),genNew()" >
         <!-- Main -->
 
-        <h1 class="text-center" class="">Wake up</h1> 
+    <h1 class="text-center" id="genNew" >Wake up</h1> 
 
-        <figure_2 class="text-center">
-            <div class="container"> 
-                <div class="button">
-                    <button type="button" class="btn btn-danger" onclick="fetchData()"> Tu cherches de la motivation?</button>
-                </div>
-            </div>
-            <div class="container">
-                <p id="activity"> </p>
-            </div>            
-        </div>   
+    <div class="text-center">
 
-        <figcaption class="blockquote-footer">
-
+        <figcaption class="blockquote-footer" >
             Someone famous in <cite title="Source Title">Ciao Bella</cite>
-
-          </figcaption>
-
-        <div>
-            <p> 
-            </p>
-        </div>
-
-            <blockquote class="blockquote">
-              <p class="mb-0"
-             id="activity" >
-            </p>
-            
-            <div class="text-center">
-            
+           </figcaption>
+     </div>
 
 
-            </blockquote>
-           
-          </figure_2>
+    <p class="text-center" id="activity"></p>
 
-        <script src="../../js/spirale_old.js"></script>
+    <script src="../../js/spirale_old.js" defer></script>
     </body>
 </html>
 <!-- https://github.com/das-jishu/add-cors -->
-
 
 
 <!--<img src="../../img/favicon_oie.ico"
