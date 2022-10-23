@@ -115,10 +115,9 @@ function showRandomDepop(depop) {
         article = depop[i]
         let annonce = `
         <ul class="list-group">
-            <li class="list-group-item">${article.title}</li>
-            <li class="list-group-item">Prix : ${article.price}</li>
-            <li class="list-group-item">Date de fin : ${article.end_date}</li>
-            <li class="list-group-item">Enchères: ${article.bids}</li>
+            <li class="list-group-item">${article.id}</li>
+            <li class="list-group-item">Prix : ${article.price.priceAmount}</li>
+            <li class="list-group-item">Date de fin : ${article.slug}</li>
         </ul>
         `
         document.getElementById('depop').innerHTML += annonce;
