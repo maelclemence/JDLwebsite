@@ -134,6 +134,10 @@
                     document.getElementById('activity').innerHTML = activity;
                 }
 
+                function showRandomAnibis(anibis) {
+                    console.log(anibis)
+                }
+
                 function logout() {
                     FB.logout(function(response) {
                         setElements(false);
@@ -185,7 +189,7 @@
                                                 "credentials": "omit"
                                             })
                                             .then(response => response.json())
-                                            .then(data => console.log(data))
+                                            .then(data => showRandomAnibis(data.listings[0]))
                                             .catch(err => console.log(err));;
                 }
             </script>
