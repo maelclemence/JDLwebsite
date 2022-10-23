@@ -1,4 +1,5 @@
 function showRandomAnibis(anibis) {
+    console.log("anibis : ", anibis)
     var result = [];
     var arrayLength = anibis.length;
     for (var i = 0; i < arrayLength; i++) {
