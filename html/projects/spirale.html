@@ -157,10 +157,7 @@
                     let annonce = `
                         <ul class="list-group">
                             <li class="list-group-item">Annonce Ricaro</li> 
-                            <li class="list-group-item">Titre: ${ricardo.title}</li> 
-                            <li class="list-group-item">Catégorie: ${ricardo.category.name}</li> 
-                            <li class="list-group-item">Détails: ${ricardo.detailsExtraLarge[0]}</li> 
-                            <li class="list-group-item">Prix: ${ricardo.price}</li>    
+                            <li class="list-group-item">Catégorie: ${ricardo.displayName}</li> 
                         </ul>
                     `
                     document.getElementById('ricardo').innerHTML = annonce;
