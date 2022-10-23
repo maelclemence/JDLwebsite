@@ -106,6 +106,25 @@ function showRandomRicardo(ricardo) {
     }
 }
 
+function showRandomDepop(depop) {
+    console.log(depop)
+    var arrayLength = depop.length;
+    document.getElementById('depop').innerHTML = "<h3>Articles Facebook</h3>";
+    for (var i = 0; i < arrayLength; i++) {
+        console.log(depop[i]);
+        article = depop[i]
+        let annonce = `
+        <ul class="list-group">
+            <li class="list-group-item">${article.title}</li>
+            <li class="list-group-item">Prix : ${article.price}</li>
+            <li class="list-group-item">Date de fin : ${article.end_date}</li>
+            <li class="list-group-item">Enchères: ${article.bids}</li>
+        </ul>
+        `
+        document.getElementById('depop').innerHTML += annonce;
+    }
+}
+
 function logout() {
     FB.logout(function(response) {
         setElements(false);
@@ -180,4 +199,28 @@ async function fetchFromRicardo() {
                             .then(response => response.json())
                             .then(data => showRandomRicardo(data))
                             .catch(err => console.log(err));;
+}
+
+async function fetchFromDepop() {
+    const response = await fetch("https://attach-cors.herokuapp.com/https://webapi.depop.com/api/v2/search/products/?categories=9&itemsPerPage=24&country=gb&currency=GBP&sort=relevance", {
+        "headers": {
+          "accept": "application/json, text/plain, */*",
+          "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,fr;q=0.7",
+          "depop-search-id": "25bae4e3-e05d-4a21-8c9b-8c543d1ef782",
+          "depop-session-id": "845fc889-42db-4430-a720-96292fd9d55e",
+          "sec-ch-ua": "\"Chromium\";v=\"106\", \"Google Chrome\";v=\"106\", \"Not;A=Brand\";v=\"99\"",
+          "sec-ch-ua-mobile": "?0",
+          "sec-ch-ua-platform": "\"Linux\"",
+          "sec-fetch-dest": "empty",
+        },
+        "referrer": "https://www.depop.com/",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "body": null,
+        "method": "GET",
+        "mode": "cors",
+        "credentials": "omit"
+      })
+        .then(response => response.json())
+        .then(data => showRandomDepop(data))
+        .catch(err => console.log(err));
 }
