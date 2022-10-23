@@ -15,7 +15,6 @@ function showRandomRicardo(ricardo) {
     var result = [];
     var arrayLength = ricardo.length;
     for (var i = 0; i < arrayLength; i++) {
-        console.log(ricardo[i]);
         article = ricardo[i];
         result.push({
             "title": article.title,
@@ -34,7 +33,6 @@ function showRandomDepop(depop) {
     result = [];
     var arrayLength = depop.length;
     for (var i = 0; i < arrayLength; i++) {
-        console.log(depop[i]);
         article = depop[i]
         result.push({
             "title": article.slug,
@@ -52,7 +50,10 @@ async function fetchData() {
     const anibis = await fetchFromAnibis();
     const ricardo = await fetchFromRicardo();
     const depop = await fetchFromDepop();
-    result = anibis.concat(ricardo).concat(depop);
+    console.log('fetchData anibis : ', anibis);
+    console.log('fetchData ricardo : ', ricardo);
+    console.log('fetchData depop : ', depop);
+    result = anibis.concat(ricardo, depop);
     for (var i = 0; i < result.length; i++) {
         addArticle(result[i]);
     }
