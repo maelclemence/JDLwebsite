@@ -11,7 +11,7 @@ function showRandomAnibis(anibis) {
             "url": `https://www.anibis.ch/${anibis.url}`, 
             "platform": "anibis"
         })
-
+    }
     return result;
 }
 
