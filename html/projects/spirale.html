@@ -105,6 +105,12 @@
                             document.getElementById('profile').style.display = "none";
                         }
                     }
+
+                    function logout() {
+                        FB.logout(function(response) {
+                            setElements(false);
+                        });
+                    }
                 </script>
             </p>
         </div>      
