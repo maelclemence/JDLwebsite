@@ -154,9 +154,8 @@
                             "credentials": "omit"
                             }).then(response => response.json())
                             .then(data => console.log(data));
-                    const {activity, type} = response; 
-                    console.log(activity);
-                    console.log(type);
+                    console.log(response.activity);
+                    console.log(response.type);
                 }
 
             </script>
