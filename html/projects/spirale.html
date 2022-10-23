@@ -152,10 +152,10 @@
                             "method": "GET",
                             "mode": "cors",
                             "credentials": "omit"
-                            });
+                            }).then(response => response.json())
+                    console.log(response);
                 }
-                data = await response.json();
-                console.log(data);
+
             </script>
         </div>      
     </body>
