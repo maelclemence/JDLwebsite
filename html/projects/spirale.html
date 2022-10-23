@@ -135,26 +135,28 @@
                 async function fetchData() {
 
                     const response = 
-                        fetch("https://jdl-cors.herokuapp.com/https://www.ricardo.ch/marketplace-spa/api/pdp/fr/1192685648?isPlanned=false", {
-                            "headers": {
-                                "accept": "application/json, text/plain, */*",
-                                "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,fr;q=0.7",
-                                "sec-ch-ua": "\"Chromium\";v=\"106\", \"Google Chrome\";v=\"106\", \"Not;A=Brand\";v=\"99\"",
-                                "sec-ch-ua-mobile": "?0",
-                                "sec-ch-ua-platform": "\"Linux\"",
-                                "sec-fetch-dest": "empty",
-                                "sec-fetch-mode": "cors",
-                                "sec-fetch-site": "same-origin",
-                                "x-client-version": "7ddb6642d0cbb766b9a3774874112daafdb0964a",
-                                "x-requested-with": "XMLHttpRequest"
-                            },
-                                "referrer": "https://www.ricardo.ch/fr/a/rosa-von-schmaus-pulli-mit-smiley-s-m-1216063694/",
-                                "referrerPolicy": "strict-origin-when-cross-origin",
-                                "body": null,
-                                "method": "GET",
-                                "mode": "cors",
-                                "credentials": "include"
-                            });
+                        fetch("https://jdl-cors.herokuapp.com/https://www.ricardo.ch/marketplace-spa/api/pdp/fr/1192685648?isPlanned=false"
+                            // , {
+                            //     "headers": {
+                            //         "accept": "application/json, text/plain, */*",
+                            //         "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,fr;q=0.7",
+                            //         "sec-ch-ua": "\"Chromium\";v=\"106\", \"Google Chrome\";v=\"106\", \"Not;A=Brand\";v=\"99\"",
+                            //         "sec-ch-ua-mobile": "?0",
+                            //         "sec-ch-ua-platform": "\"Linux\"",
+                            //         "sec-fetch-dest": "empty",
+                            //         "sec-fetch-mode": "cors",
+                            //         "sec-fetch-site": "same-origin",
+                            //         "x-client-version": "7ddb6642d0cbb766b9a3774874112daafdb0964a",
+                            //         "x-requested-with": "XMLHttpRequest"
+                            //     },
+                            //         "referrer": "https://www.ricardo.ch/fr/a/rosa-von-schmaus-pulli-mit-smiley-s-m-1216063694/",
+                            //         "referrerPolicy": "strict-origin-when-cross-origin",
+                            //         "body": null,
+                            //         "method": "GET",
+                            //         "mode": "cors",
+                            //         "credentials": "include"
+                            //     }
+                            );
                         data = await response;
                         console.log(data);
                 }
