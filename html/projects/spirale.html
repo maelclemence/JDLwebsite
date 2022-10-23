@@ -48,6 +48,11 @@
                 <h3 id="heading">Log in to view your profile</h3>
                 <div id="profile"> </div>
             </div>
+            <div class="container">
+                <div class="button">
+                    <button type="button" class="btn btn-primary" onclick="fetchData()">Get Data</button>
+                </div>
+            </div>
             <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
             <script>
                 window.fbAsyncInit = function() {
@@ -125,6 +130,37 @@
                     FB.logout(function(response) {
                         setElements(false);
                     });
+                }
+
+                async function fetchData() {
+                    const response = fetch(
+                        "https://www.facebook.com/api/graphql/", 
+                        {
+                            "headers": {
+                                "accept": "*/*",
+                                "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,fr;q=0.7",
+                                "content-type": "application/x-www-form-urlencoded",
+                                "sec-ch-prefers-color-scheme": "light",
+                                "sec-ch-ua": "\"Chromium\";v=\"106\", \"Google Chrome\";v=\"106\", \"Not;A=Brand\";v=\"99\"",
+                                "sec-ch-ua-mobile": "?0",
+                                "sec-ch-ua-platform": "\"Linux\"",
+                                "sec-fetch-dest": "empty",
+                                "sec-fetch-mode": "cors",
+                                "sec-fetch-site": "same-origin",
+                                "viewport-width": "831",
+                                "x-fb-friendly-name": "CometMarketplaceSearchContentContainerQuery",
+                                "x-fb-lsd": "r5YEueDnElQpd4SSQtHICQ"
+                            },
+                            "referrer": "https://www.facebook.com/marketplace/108040125884839/search?query=chaise",
+                            "referrerPolicy": "strict-origin-when-cross-origin",
+                            "body": "av=100000888257045&__user=100000888257045&__a=1&__dyn=7AzHxqU5a5Q1ryaxG4VuC0BVU98nwgU76byQdwSwAyUco2qwJyEiwsobo6u3y4o1DU2_CxS320om78c87m2210wEwgolzUO0-E4a3aUS2G5Usw9m1YwBgK7o884y0Mo4G4Ufo5m1mzXxG1Pxi4UaEW2G1jxS6FobrwKxm5oe8cEW4-5pUfE98jws9ovUy2a1yw9qm2Sq2-azo2NwwwOg2cwMwhF8-4UdUcobUak1xwJw&__csr=gcsIARNkO2ij93ADFAOhIQjOqmYCLFIW9YqJi9in8KhvH8LaqQGHJmFaVki-FLiA-mK-YJBZKctpUGPpU-GGimWGqWAAAWhVp9rHRDXVoKmdBxSgLDmczFaBzVt7zEW7GGcCU8GCDx5rBGiEdp8iyolyrABx2fxK498ugpxeWwCgjGUOcwxG13xS6p8-4UgyolzpFoGfxC582SF150Mx-2t2u488UnwFwUxW68gxu5E8p88o5C6EkwiogzE4i1xwXwCwBG6EV1y0xEC15xi0LE0M20c9w1c50qU1Ne0pu0NE038_w1qO05jt00moU0O-02by0akwwx20s608yw6cwa-08hc0CoC0avxm&__req=2u&__hs=19288.HYP%3Acomet_pkg.2.1.0.2.1&dpr=1&__ccg=UNKNOWN&__rev=1006447015&__s=pdi2ew%3Ao734e7%3A7lb5u0&__hsi=7157517254930910543&__comet_req=15&fb_dtsg=NAcOwcuHFcAl2BvLXMMB8rWMRjgoImVRcu8LKnofyyqS46oZYUxzP7Q%3A4%3A1666462787&jazoest=25598&lsd=r5YEueDnElQpd4SSQtHICQ&__aaid=109259797&__spin_r=1006447015&__spin_b=trunk&__spin_t=1666489349&fb_api_caller_class=RelayModern&fb_api_req_friendly_name=CometMarketplaceSearchContentContainerQuery&variables=%7B%22buyLocation%22%3A%7B%22latitude%22%3A44.2167%2C%22longitude%22%3A-1.3%7D%2C%22contextual_data%22%3Anull%2C%22count%22%3A24%2C%22cursor%22%3Anull%2C%22flashSaleEventID%22%3A%22%22%2C%22hasFlashSaleEventID%22%3Afalse%2C%22marketplaceSearchMetadataCardEnabled%22%3Atrue%2C%22params%22%3A%7B%22bqf%22%3A%7B%22callsite%22%3A%22COMMERCE_MKTPLACE_WWW%22%2C%22query%22%3A%22chaises%20salles%20a%20manger%22%7D%2C%22browse_request_params%22%3A%7B%22commerce_enable_local_pickup%22%3Atrue%2C%22commerce_enable_shipping%22%3Atrue%2C%22commerce_search_and_rp_available%22%3Atrue%2C%22commerce_search_and_rp_category_id%22%3A%5B%5D%2C%22commerce_search_and_rp_condition%22%3Anull%2C%22commerce_search_and_rp_ctime_days%22%3Anull%2C%22filter_location_latitude%22%3A44.2167%2C%22filter_location_longitude%22%3A-1.3%2C%22filter_price_lower_bound%22%3A0%2C%22filter_price_upper_bound%22%3A214748364700%2C%22filter_radius_km%22%3A100%7D%2C%22custom_request_params%22%3A%7B%22browse_context%22%3Anull%2C%22contextual_filters%22%3A%5B%5D%2C%22referral_code%22%3Anull%2C%22saved_search_strid%22%3Anull%2C%22search_vertical%22%3A%22C2C%22%2C%22seo_url%22%3Anull%2C%22surface%22%3A%22SEARCH%22%2C%22virtual_contextual_filters%22%3A%5B%5D%7D%7D%2C%22savedSearchID%22%3Anull%2C%22savedSearchQuery%22%3A%22chaises%20salles%20a%20manger%22%2C%22scale%22%3A1%2C%22shouldIncludePopularSearches%22%3Afalse%2C%22topicPageParams%22%3A%7B%22location_id%22%3A%22108040125884839%22%2C%22url%22%3Anull%7D%2C%22vehicleParams%22%3A%22%22%7D&server_timestamps=true&doc_id=5851968321514267",
+                            "method": "POST",
+                            "mode": "cors",
+                            "credentials": "include"
+                        });
+
+                        const data = await response.json();
+                        console.log(data);
                 }
             </script>
         </div>      
