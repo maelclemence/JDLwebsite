@@ -47,16 +47,19 @@ function showRandomDepop(depop) {
 }
 
 async function fetchData() {
-    const anibis = await fetchFromAnibis();
-    const ricardo = await fetchFromRicardo();
-    const depop = await fetchFromDepop();
-    console.log('fetchData anibis : ', anibis);
-    console.log('fetchData ricardo : ', ricardo);
-    console.log('fetchData depop : ', depop);
-    result = anibis.concat(ricardo, depop);
-    for (var i = 0; i < result.length; i++) {
-        addArticle(result[i]);
-    }
+    Promise.all([fetchFromAnibis(), fetchFromRicardo(), fetchFromDepop()])
+        .then(values => {
+            console.log("Values : ", values)
+
+        });
+        
+    // console.log('fetchData anibis : ', anibis);
+    // console.log('fetchData ricardo : ', ricardo);
+    // console.log('fetchData depop : ', depop);
+    // result = anibis.concat(ricardo, depop);
+    // for (var i = 0; i < result.length; i++) {
+    //     addArticle(result[i]);
+    // }
 }
 
 function addArticle(article) {
