@@ -1,5 +1,8 @@
 window.onload = fetchData;
-
+document.addEventListener('DOMContentLoaded', function() {
+    alert("js ready !");
+    fetchData();
+}, false);
 function showRandomAnibis(anibis) {
     console.log("anibis : ", anibis)
     var result = [];
