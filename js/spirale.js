@@ -1,4 +1,5 @@
 window.onload = function() {
+    console.log('Fetching data...');
     fetchData()
 }
 
@@ -73,7 +74,7 @@ function addArticle(article) {
           <div class="card shadow-sm">
             <img src=${article.image} alt="Image de l'article">
 
-            <div class="card-body">
+            <div class="card-body bg-dark" >
               <p class="card-text">${article.title}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
