@@ -69,7 +69,7 @@ function addArticle(article) {
           <div class="card shadow-sm">
             <img src=${article.image} alt="Image de l'article">
 
-            <div class="card-body" color="#212529" >
+            <div class="card-body">
               <p class="card-text">${article.title}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
