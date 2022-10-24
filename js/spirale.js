@@ -1,8 +1,3 @@
-window.onload = function() {
-    console.log('Fetching data...');
-    fetchData()
-}
-
 function showRandomAnibis(anibis) {
     console.log("anibis : ", anibis)
     var result = [];
@@ -74,7 +69,7 @@ function addArticle(article) {
           <div class="card shadow-sm">
             <img src=${article.image} alt="Image de l'article">
 
-            <div class="card-body bg-dark" >
+            <div class="card-body" color=#212529 >
               <p class="card-text">${article.title}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
@@ -91,6 +86,7 @@ function addArticle(article) {
 }
 
 async function fetchData() {
+    console.log('Fetching data...');
     await Promise.all([fetchFromAnibis(), fetchFromRicardo(), fetchFromDepop()])
         .then(values => {
             console.log("Values : ", values)
