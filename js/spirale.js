@@ -1,3 +1,7 @@
+window.onload = function() {
+    fetchData()
+}
+
 function showRandomAnibis(anibis) {
     console.log("anibis : ", anibis)
     var result = [];
@@ -62,22 +66,6 @@ function showRandomDepop(depop) {
     return result;
 }
 
-async function fetchData() {
-    await Promise.all([fetchFromAnibis(), fetchFromRicardo(), fetchFromDepop()])
-        .then(values => {
-            console.log("Values : ", values)
-
-        });
-    const anibis = fetchFromAnibis();
-    const ricardo = fetchFromRicardo();
-    const depop = fetchFromDepop();
-    const fetched_results = [await anibis, await ricardo, await depop];
-    const results = fetched_results.flat();
-    for (var i = 0; i < results.length; i++) {
-        addArticle(results[i]);
-    }
-}
-
 function addArticle(article) {
     console.log("addArticle : ", article)
     html = `
@@ -99,6 +87,22 @@ function addArticle(article) {
         </div>
     `;
     document.getElementById("all_articles").innerHTML += html;
+}
+
+async function fetchData() {
+    await Promise.all([fetchFromAnibis(), fetchFromRicardo(), fetchFromDepop()])
+        .then(values => {
+            console.log("Values : ", values)
+
+        });
+    const anibis = fetchFromAnibis();
+    const ricardo = fetchFromRicardo();
+    const depop = fetchFromDepop();
+    const fetched_results = [await anibis, await ricardo, await depop];
+    const results = fetched_results.flat();
+    for (var i = 0; i < results.length; i++) {
+        addArticle(results[i]);
+    }
 }
 
 async function fetchFromAnibis() {
