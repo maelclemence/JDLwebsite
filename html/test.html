@@ -15,11 +15,26 @@
   <link rel="manifest" href="../../site.webmanifest">
   <link rel="apple-touch-icon" href="../../icon.png">
   <!-- Place favicon.ico in the root directory -->
-  
-  <link rel="stylesheet" href="../../css/normalize.css">
-  <link rel="stylesheet" href="../../css/main.css">
-  <noscript><link rel="stylesheet" href="../../css/noscript.css" /></noscript>
-  
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    /* Create three equal columns that floats next to each other */
+    .column {
+      float: right;
+      width: 33.33%;
+      padding: 10px;
+      height: 300px; /* Should be removed. Only for demonstration */
+    }
+    
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    </style>
   <meta name="theme-color" content="#fafafa">
 </head>
 
@@ -37,7 +52,7 @@
           <h2>Column 3</h2>
           <p>Some text..</p>
         </div>
-      </div>
+    </div>
 </body>
 
 </html>
