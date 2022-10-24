@@ -6,26 +6,21 @@
     <meta name="author" content="Timon Voide">
     <meta name=" description" content="Tu cherches de la motivation?">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <meta property="og:image" content="https://tenor.com/view/oie-goose-goos-meme-danse-gif-21298954">
-    <meta property="og:description" content="Le motivateur du Jeu de l'oie te permet à tout instant de te ressourcer et de 
-    planifier des activités pour ne pas mourir d'ennui.">
-    <meta property="og:title" content="le jeu de l'oie chercher de la motivation">
  
     <link rel="shortcut icon" href="../../img/favicon_oie.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="../../img/favicon_oie.ico">
 
-    <link rel="stylesheet" href="https://bootswatch.com/5/minty/bootstrap.min.css">
-    <link rel="stylesheet" href="../../css/normalize.css">
-    <link rel="stylesheet" href="../../css/main copy.css">
+    <link rel="stylesheet" href="https://bootswatch.com/5/minty/bootstrap.min.css"> 
+ 
+    <link rel="stylesheet" href="../../css/wake up.css">
     <noscript><link rel="stylesheet" href="../../css/noscript.css" /></noscript>
    
     <style>
             body {
               background-image: url('../../img/oie-goose.gif');
-              background-repeat: no-repeat;
+              background-repeat: repeat;
               background-attachment: fixed; 
-              background-size: 100% 100%;
+              background-size: 50% 50%;
             }
             </style>
     </head>
@@ -34,33 +29,26 @@
 
     <!-- Add your site or application content here -->
 
-    <body onclick="fetchData(),genNew()" >
+    <body onclick="fetchData(),getRandomColor()" >
         <!-- Main -->
+"
+    <h1 class="text-center">Wake up</h1> 
 
-    <h1 class="text-center" id="genNew" >Wake up</h1> 
-
-    <div class="text-center">
-
-        <figcaption class="blockquote-footer" >
+    <p class="text-center" >
+        <figcaption class="blockquote-footer text-center"  >
             Someone famous in <cite title="Source Title">Ciao Bella</cite>
            </figcaption>
-     </div>
+    <p>
+
+    <div class="text-center">  
+    <h1 id="activity"></h1>
+    </div>  
 
 
-    <p class="text-center" id="activity"></p>
-
-    <script src="../../js/spirale_old.js" defer></script>
+    <script src="../../js/wake up.js" defer></script>
     </body>
 </html>
 <!-- https://github.com/das-jishu/add-cors -->
-
-
-<!--<img src="../../img/favicon_oie.ico"
-alt="Ici se trouve l'image d'une oie, prête à te motiver à fond les ballon" />
-<img src="../../img/oie-goose.gif"
-alt="Ici se trouve l'image d'une oie, prête à te motiver à fond les ballon" />-->
-
-
 </body>
 
 

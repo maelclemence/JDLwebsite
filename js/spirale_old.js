@@ -69,7 +69,7 @@ function setElements(isLoggedIn) {
 }
 
 function showRandomActivity(activity) {
-    document.getElementById('activity').innerText +=` \n ${activity} `;
+    document.getElementById('activity').innerText += `/n ${activity}`;
 }
 
 function showRandomAnibis(anibis) {
