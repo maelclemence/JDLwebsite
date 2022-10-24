@@ -4,7 +4,7 @@ function showRandomAnibis(anibis) {
     var arrayLength = anibis.length;
     for (var i = 0; i < arrayLength; i++) {
         article = anibis[i];
-        var image = "";
+        var image = "../img/goose.png";
         try {
             const baseUrl = article.imageData.baseUrl;
             console.log("baseUrl : ", baseUrl)
@@ -37,7 +37,7 @@ function showRandomRicardo(ricardo) {
             "title": article.title,
             "price": article.buyNowPrice,
             "name": article.title,
-            "image": "",
+            "image": "../img/goose.png",
             "url": "https://www.ricardo.ch/fr/c/o/antiquites-et-arts-38399/",
             "platform": "ricardo"
         })
