@@ -1,4 +1,4 @@
-window.onload = fetchData();
+window.onload = fetchData;
 
 function showRandomAnibis(anibis) {
     console.log("anibis : ", anibis)
