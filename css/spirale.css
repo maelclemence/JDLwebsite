@@ -4917,7 +4917,7 @@ fieldset:disabled .btn {
 }
 
 .card-text:last-child {
-    color:rgba(255, 255, 255, .85)
+    color:rgba(255, 255, 255, .85);
     margin-bottom: 0
 }
 
