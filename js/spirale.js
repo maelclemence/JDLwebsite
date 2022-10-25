@@ -1,22 +1,19 @@
-function showRandomAnibis(anibis) {
+function sanitizeAnibisItems(anibis) {
     console.log("anibis : ", anibis)
-    var result = [];
+    var results = [];
     var arrayLength = anibis.length;
     for (var i = 0; i < arrayLength; i++) {
         article = anibis[i];
         var image = "../../img/goose.png";
         try {
             const baseUrl = article.imageData.baseUrl;
-            console.log("baseUrl : ", baseUrl)
             const size   =  "/?380x285/0/60/";
-            console.log("stuff : ", size)
             const first_image   = article.imageData.images[0].substring(9);
-            console.log("image : ", first_image)
             image = baseUrl + size + first_image;
         } catch (error) {
             console.log("error : ", error)
         }
-        result.push({
+        results.push({
             "title": article.title,
             "price": article.price,
             "name": article.category.name,
@@ -25,10 +22,10 @@ function showRandomAnibis(anibis) {
             "platform": "anibis"
         })
     }
-    return result;
+    return results;
 }
 
-function showRandomRicardo(ricardo) {
+function sanitizeRicardoItems(ricardo) {
     var result = [];
     var arrayLength = ricardo.length;
     for (var i = 0; i < arrayLength; i++) {
@@ -45,10 +42,9 @@ function showRandomRicardo(ricardo) {
     return result;
 }
 
-function showRandomDepop(depop) {
+function sanitizeDepopItems(depop) {
     result = [];
-    var arrayLength = depop.length;
-    for (var i = 0; i < arrayLength; i++) {
+    for (var i = 0; i < depop.length; i++) {
         article = depop[i]
         result.push({
             "title": article.slug,
@@ -62,48 +58,93 @@ function showRandomDepop(depop) {
     return result;
 }
 
-function addArticle(article) {
-    console.log("addArticle : ", article)
-    html = `
-        <div class="col">
-          <div class="card shadow-sm">
-            <img src=${article.image} alt="Image de l'article">
-
-            <div class="card-body">
-              <p class="card-text">${article.title}</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <a class="btn btn-primary my-2" href="${article.url}" target="_blank">View</a>
-                  <a class="btn btn-secondary my-2" href="https://jeudeloie.ch" target="_blank">JDL</a>
+function addArticles(articles) {
+    console.log('Adding articles...');
+    for (var i = 0; i < articles.length; i++) {
+        const article = articles[i];
+        html = `
+            <div class="col">
+              <div class="card shadow-sm">
+                <img src=${article.image} alt="Image de l'article">
+                <div class="card-body">
+                  <p class="card-text">${article.title}</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <a class="btn btn-primary my-2" href="${article.url}" target="_blank">View</a>
+                      <a class="btn btn-secondary my-2" href="https://jeudeloie.ch" target="_blank">JDL</a>
+                    </div>
+                    <small class="text-muted">${article.platform}</small>
+                  </div>
                 </div>
-                <small class="text-muted">${article.platform}</small>
               </div>
             </div>
-          </div>
-        </div>
-    `;
-    document.getElementById("all_articles").innerHTML += html;
+        `;
+        document.getElementById("all_articles").innerHTML += html;
+    }
 }
 
 async function fetchData() {
     console.log('Fetching data...');
-    await Promise.all([fetchFromAnibis(), fetchFromRicardo(), fetchFromDepop()])
-        .then(values => {
-            console.log("Values : ", values)
+    let anibisPromise = new Promise(
+        (resolve, reject) => {
+            setTimeout(() => {
+                let results = fetchFromAnibis("shampoo");
+                resolve(results);
+            }, 300);
+        }
+    );
 
-        });
-    const anibis = fetchFromAnibis();
-    const ricardo = fetchFromRicardo();
-    const depop = fetchFromDepop();
-    const fetched_results = [await anibis, await ricardo, await depop];
-    const results = fetched_results.flat();
-    for (var i = 0; i < results.length; i++) {
-        addArticle(results[i]);
-    }
+    anibisPromise.then(
+        function(results) {
+            console.log('Adding Anibis articles...', results);
+            addArticles(results);
+        },
+        function(err) {
+            console.log('Error fetching from Anibis : ', err);
+        }
+    );
+
+    let ricardoPromise = new Promise(
+        (resolve, reject) => {
+            setTimeout(() => {
+                let results = fetchFromRicardo("shampoo");
+                resolve(results);
+            }, 300);
+        }
+    );
+
+    ricardoPromise.then(
+        function(results) {
+            console.log('Adding Ricardo articles...', results);
+            addArticles(results);
+        },
+        function(err) {
+            console.log('Error fetching from Ricardo : ', err);
+        }
+    );
+
+    let depopPromise = new Promise(
+        (resolve, reject) => {
+            setTimeout(() => {
+                let results = fetchFromDepop("shampoo");
+                resolve(results);
+            }, 300);
+        }
+    );
+
+    depopPromise.then(
+        function(results) {
+            console.log('Adding Depop articles...', results);
+            addArticles(results);
+        },
+        function(err) {
+            console.log('Error fetching from Depop : ', err);
+        }
+    );
 }
 
-async function fetchFromAnibis() {
-    return fetch("https://attach-cors.herokuapp.com/https://api.anibis.ch/v4/fr/search/listings?cun=toutes-les-rubriques&fcun=toutes-les-rubriques&fts=clavier&pr=1", {
+async function fetchFromAnibis(recherche) {
+    return fetch(`https://attach-cors.herokuapp.com/https://api.anibis.ch/v4/fr/search/autosuggestions?cid=1&fcid=1&fts=banane&pr=1`, {
                                 "headers": {
                                     "accept": "application/json",
                                     "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,fr;q=0.7",
@@ -112,7 +153,7 @@ async function fetchFromAnibis() {
                                     "sec-ch-ua-mobile": "?0",
                                     "sec-ch-ua-platform": "\"Linux\"",
                                 },
-                                "referrer": "https://www.anibis.ch/fr/c/toutes-les-rubriques?fts=clavier",
+                                "referrer": `https://www.anibis.ch/fr/c/toutes-les-rubriques?fts=shampoo`,
                                 "referrerPolicy": "unsafe-url",
                                 "body": null,
                                 "method": "GET",
@@ -120,7 +161,7 @@ async function fetchFromAnibis() {
                                 "credentials": "omit"
                             })
                             .then(response => response.json())
-                            .then(data => showRandomAnibis(data.listings))
+                            .then(data => sanitizeAnibisItems(data.listings))
 }
 
 async function fetchFromRicardo() {
@@ -140,7 +181,7 @@ async function fetchFromRicardo() {
                                     "credentials": "omit"
                             })
                             .then(response => response.json())
-                            .then(data => showRandomRicardo(data))
+                            .then(data => sanitizeRicardoItems(data))
 }
 
 async function fetchFromDepop() {
@@ -160,5 +201,5 @@ async function fetchFromDepop() {
         "credentials": "omit"
       })
         .then(response => response.json())
-        .then(data => showRandomDepop(data.products))
+        .then(data => sanitizeDepopItems(data.products))
 }

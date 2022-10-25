@@ -12,4 +12,4 @@ echo "git pushing to origin master"
 git push
 
 echo "ftp pushing to server"
-git ftp push 
+git ftp push -v
