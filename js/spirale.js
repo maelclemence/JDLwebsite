@@ -1,6 +1,6 @@
 function sanitizeAnibisItems(anibis) {
     console.log("anibis : ", anibis)
-    var result = [];
+    var results = [];
     var arrayLength = anibis.length;
     for (var i = 0; i < arrayLength; i++) {
         article = anibis[i];
@@ -13,7 +13,7 @@ function sanitizeAnibisItems(anibis) {
         } catch (error) {
             console.log("error : ", error)
         }
-        result.push({
+        results.push({
             "title": article.title,
             "price": article.price,
             "name": article.category.name,
@@ -22,7 +22,7 @@ function sanitizeAnibisItems(anibis) {
             "platform": "anibis"
         })
     }
-    return result;
+    return results;
 }
 
 function sanitizeRicardoItems(ricardo) {
@@ -88,6 +88,7 @@ async function fetchData() {
     let anibisPromise = new Promise(function(myResolve, myReject) {
         console.log('Fetching from anibis...');
         let results = fetchFromAnibis("Shampoo");
+        console.log('results : ', results);
 
         if (results.length > 0) {
             myResolve(results);
