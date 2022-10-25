@@ -1,4 +1,4 @@
-function showRandomAnibis(anibis) {
+function sanitizeAnibisItems(anibis) {
     console.log("anibis : ", anibis)
     var result = [];
     var arrayLength = anibis.length;
@@ -28,7 +28,7 @@ function showRandomAnibis(anibis) {
     return result;
 }
 
-function showRandomRicardo(ricardo) {
+function sanitizeRicardoItems(ricardo) {
     var result = [];
     var arrayLength = ricardo.length;
     for (var i = 0; i < arrayLength; i++) {
@@ -45,10 +45,9 @@ function showRandomRicardo(ricardo) {
     return result;
 }
 
-function showRandomDepop(depop) {
+function sanitizeDepopItems(depop) {
     result = [];
-    var arrayLength = depop.length;
-    for (var i = 0; i < arrayLength; i++) {
+    for (var i = 0; i < depop.length; i++) {
         article = depop[i]
         result.push({
             "title": article.slug,
@@ -62,44 +61,42 @@ function showRandomDepop(depop) {
     return result;
 }
 
-function addArticle(article) {
-    console.log("addArticle : ", article)
-    html = `
-        <div class="col">
-          <div class="card shadow-sm">
-            <img src=${article.image} alt="Image de l'article">
-
-            <div class="card-body">
-              <p class="card-text">${article.title}</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <a class="btn btn-primary my-2" href="${article.url}" target="_blank">View</a>
-                  <a class="btn btn-secondary my-2" href="https://jeudeloie.ch" target="_blank">JDL</a>
+function addArticle(articles) {
+    console.log('Adding articles...');
+    for (var i = 0; i < articles.length; i++) {
+        const article = articles[i];
+        html = `
+            <div class="col">
+              <div class="card shadow-sm">
+                <img src=${article.image} alt="Image de l'article">
+                <div class="card-body">
+                  <p class="card-text">${article.title}</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <a class="btn btn-primary my-2" href="${article.url}" target="_blank">View</a>
+                      <a class="btn btn-secondary my-2" href="https://jeudeloie.ch" target="_blank">JDL</a>
+                    </div>
+                    <small class="text-muted">${article.platform}</small>
+                  </div>
                 </div>
-                <small class="text-muted">${article.platform}</small>
               </div>
             </div>
-          </div>
-        </div>
-    `;
-    document.getElementById("all_articles").innerHTML += html;
+        `;
+        document.getElementById("all_articles").innerHTML += html;
+    }
 }
 
 async function fetchData() {
     console.log('Fetching data...');
-    await Promise.all([fetchFromAnibis(), fetchFromRicardo(), fetchFromDepop()])
-        .then(values => {
-            console.log("Values : ", values)
-
-        });
-    const anibis = fetchFromAnibis();
-    const ricardo = fetchFromRicardo();
-    const depop = fetchFromDepop();
-    const fetched_results = [await anibis, await ricardo, await depop];
-    const results = fetched_results.flat();
-    for (var i = 0; i < results.length; i++) {
-        addArticle(results[i]);
-    }
+    Promise.call(fetchFromAnibis()).then(function(results) {
+            addArticles(results);
+    });
+    Promise.call(fetchFromRicardo()).then(function(results) {
+            addArticles(results);
+    });
+    Promise.call(fetchFromDepop()).then(function(results) {
+            addArticles(results);
+    });
 }
 
 async function fetchFromAnibis() {
@@ -120,7 +117,7 @@ async function fetchFromAnibis() {
                                 "credentials": "omit"
                             })
                             .then(response => response.json())
-                            .then(data => showRandomAnibis(data.listings))
+                            .then(data => sanitizeAnibisItems(data.listings))
 }
 
 async function fetchFromRicardo() {
@@ -140,7 +137,7 @@ async function fetchFromRicardo() {
                                     "credentials": "omit"
                             })
                             .then(response => response.json())
-                            .then(data => showRandomRicardo(data))
+                            .then(data => sanitizeRicardoItems(data))
 }
 
 async function fetchFromDepop() {
@@ -160,5 +157,5 @@ async function fetchFromDepop() {
         "credentials": "omit"
       })
         .then(response => response.json())
-        .then(data => showRandomDepop(data.products))
+        .then(data => sanitizeDepopItems(data.products))
 }

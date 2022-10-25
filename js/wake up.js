@@ -18,7 +18,6 @@ function getRandomColor() {
     return taille;
   }
 
-
 async function fetchData() {
     setColorTitle();
     const response = await fetch("https://attach-cors.herokuapp.com/https://www.boredapi.com/api/activity?type=recreational", {
@@ -53,7 +52,3 @@ function showRandomActivity(activity) {
     + document.getElementById('activity').innerHTML;
    
 }
-
-
-   
-
