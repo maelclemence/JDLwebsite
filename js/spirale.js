@@ -147,7 +147,7 @@ async function fetchFromAnibis(recherche) {
     return fetch(`https://attach-cors.herokuapp.com/https://api.anibis.ch/v4/fr/search/autosuggestions?cid=1&fcid=1&fts=banane&pr=1`, {
                                 "headers": {
                                     // "accept": "application/json",
-                                    "accept-language": "en-GB,en;q=0.9",
+                                    "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,fr;q=0.7",
                                     "content-type": "application/json",
                                     "sec-ch-ua": "\"Chromium\";v=\"106\", \"Google Chrome\";v=\"106\", \"Not;A=Brand\";v=\"99\"",
                                     "sec-ch-ua-mobile": "?0",
