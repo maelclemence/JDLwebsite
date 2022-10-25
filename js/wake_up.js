@@ -93,10 +93,8 @@ let visacard= 0.9*(Math.round(mastercard*10)/10)
 let backtostring= visacard.toString()
 sentence.replace(sentence.substring(33.36),backtostring)
 console.log(visacard)
-sentencemodif=sentence.replace(result,backtostring)
-console.log(sentencemodif)
-
-
+sentence.replace(result,backtostring)
+console.log(sentence.replace(result,backtostring))
 })
 
 
