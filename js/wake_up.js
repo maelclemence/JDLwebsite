@@ -108,6 +108,6 @@ function showRandomActivity(activity) {
   // iterate on list and diminish opacity of each sentence
   sentences.push(sentence);
   changeSentencesOpacity()
-  document.getElementById('activity').innerHTML = sentences.join(" ");
+  document.getElementById('activity').innerHTML = sentences.join("");
 
 }
