@@ -96,7 +96,7 @@ async function fetchData() {
 
     anibisPromise.then(
         function(results) {
-            console.log('Adding Anibis articles...');
+            console.log('Adding Anibis articles...', results);
             addArticles(results);
         },
         function(err) {
