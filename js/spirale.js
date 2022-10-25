@@ -85,15 +85,26 @@ function addArticles(articles) {
 
 async function fetchData() {
     console.log('Fetching data...');
-    let anibisPromise = new Promise(function() {
+    let anibisPromise = new Promise(function(myResolve, myReject) {
         console.log('Fetching from anibis...');
-        fetchFromAnibis("Shampoo")
+        let results = fetchFromAnibis("Shampoo");
+
+        if (results.length > 0) {
+            myResolve(results);
+        } else {
+            myReject("Anibis fetch failed");
+        }
     });
 
-    anibisPromise.then(function(results) {
-        console.log('Adding Anibis articles...');
-        addArticles(results);
-    });
+    anibisPromise.then(
+        function(results) {
+            console.log('Adding Anibis articles...');
+            addArticles(results);
+        },
+        function(err) {
+            console.log('Error fetching from Anibis : ', err);
+        }
+    );
 
     let ricardoPromise = new Promise(function() {
         console.log('Fetching from ricardo...');
