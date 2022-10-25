@@ -58,7 +58,7 @@ function sanitizeDepopItems(depop) {
     return result;
 }
 
-function addArticle(articles) {
+function addArticles(articles) {
     console.log('Adding articles...');
     for (var i = 0; i < articles.length; i++) {
         const article = articles[i];
