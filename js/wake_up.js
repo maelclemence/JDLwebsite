@@ -67,14 +67,12 @@ var winHeight = window.innerHeight * 0.9;
 randomTop = getRandomNumber(0, winHeight);
 randomLeft = getRandomNumber(0, winWidth);
 
-
 // function that returns a random number between a min and max
 function getRandomNumber(min, max) {
 
   return Math.random() * (max - min) + min;
 
 }
-
 
 function setColorTitle() {
   document.getElementById('title').innerHTML = `<h1  
@@ -86,7 +84,7 @@ var sentences = [];
 
 function changeSentencesOpacity() {
   for(i=0; i < sentences.length; i++){
-    sentence = sentences[i]
+    let sentence = sentences[i]
     console.log("Salut:",sentence)
       let result = sentence.substring(33, 36);
       console.log(result)
@@ -110,6 +108,6 @@ function showRandomActivity(activity) {
   // iterate on list and diminish opacity of each sentence
   sentences.push(sentence);
   changeSentencesOpacity()
-  document.getElementById('activity').innerHTML = sentences.join();
+  document.getElementById('activity').innerHTML = sentences.join(" ");
 
 }
