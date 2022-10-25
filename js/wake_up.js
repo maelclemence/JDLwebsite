@@ -94,7 +94,7 @@ function changeSentencesOpacity() {
       console.log("yomec : ", yomec)
       let wut = yomec.toFixed(1);
       console.log("wut : ", wut)
-      let mastercard = 0.92*wut;
+      let mastercard = 0.4*wut;
       console.log("mastercard : ", mastercard)
       let backtostring = mastercard.toString()
       sentences[i] = sentence.replace(result, backtostring)
