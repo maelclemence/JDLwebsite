@@ -89,10 +89,12 @@ async function fetchData() {
         console.log('Fetching from anibis...');
         let results = fetchFromAnibis("Shampoo");
         console.log('results : ', results);
-
+        console.log('results.length : ', results.length);
         if (results.length > 0) {
+            console.log('Anibis results all good');
             myResolve(results);
         } else {
+            console.log('Anibis results not good');
             myReject("Anibis fetch failed");
         }
     });
