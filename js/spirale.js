@@ -153,8 +153,6 @@ async function fetchFromAnibis(recherche) {
                                     "sec-ch-ua-mobile": "?0",
                                     "sec-ch-ua-platform": "\"Linux\"",
                                 },
-                                "referrer": `https://www.anibis.ch/fr/c/toutes-les-rubriques?fts=fraise`,
-                                "referrerPolicy": "unsafe-url",
                                 "body": null,
                                 "method": "GET",
                                 "mode": "cors",
