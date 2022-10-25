@@ -87,7 +87,7 @@ function changeSentencesOpacity() {
       let result = sentence.substring(33, 36);
       let yomec = parseFloat(result)
       let rate = Math.random()
-      let mastercard = rate*yomec;
+      let mastercard = 0.8*yomec;
       let wut = mastercard.toFixed(1);
       console.log("Salut:",sentence)
       console.log(result)
