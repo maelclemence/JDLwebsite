@@ -93,7 +93,7 @@ function changeSentencesOpacity() {
       console.log("yomec : ", yomec)
       console.log("wut : ", wut)
       console.log("mastercard : ", mastercard)
-      let backtostring = mastercard.toString()
+      let backtostring = wut.toString()
       sentences[i] = sentence.replace(result, backtostring)
       console.log(sentences[i])
 
@@ -105,8 +105,8 @@ function changeSentencesOpacity() {
 function showRandomActivity(activity) {
   const sentence = ` <p style="color:${getRandomColor()};opacity:1.0;font-size:${size()};top:${getRandomNumber(0, winHeight)}px;left:${getRandomNumber(0, winHeight)}px">${activity}</p>`;
   // iterate on list and diminish opacity of each sentence
-  sentences.push(sentence);
   changeSentencesOpacity()
+  sentences.push(sentence);
   document.getElementById('activity').innerHTML = sentences.join("");
 
 }
