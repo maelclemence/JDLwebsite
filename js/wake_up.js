@@ -69,8 +69,7 @@ randomLeft = getRandomNumber(0, winWidth);
 
 // function that returns a random number between a min and max
 function getRandomNumber(min, max) {
-
-  return Math.random() * (max - min) + min;
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 
 }
 
@@ -85,14 +84,14 @@ var sentences = [];
 function changeSentencesOpacity() {
   for(i=0; i < sentences.length; i++){
     let sentence = sentences[i]
-    console.log("Salut:",sentence)
       let result = sentence.substring(33, 36);
-      console.log(result)
       let yomec = parseFloat(result)
+      let mastercard = 0.4*yomec;
+      let wut = mastercard.toFixed(1);
+      console.log("Salut:",sentence)
+      console.log(result)
       console.log("yomec : ", yomec)
-      let wut = yomec.toFixed(1);
       console.log("wut : ", wut)
-      let mastercard = 0.4*wut;
       console.log("mastercard : ", mastercard)
       let backtostring = mastercard.toString()
       sentences[i] = sentence.replace(result, backtostring)
