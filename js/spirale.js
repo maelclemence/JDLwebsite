@@ -144,7 +144,7 @@ async function fetchData() {
 }
 
 async function fetchFromAnibis(recherche) {
-    return fetch(`https://attach-cors.herokuapp.com/https://api.anibis.ch/v4/fr/search/listings?cun=toutes-les-rubriques&fcun=toutes-les-rubriques&fts=fraise&pr=1`)
+    return fetch(`https://api.anibis.ch/v4/fr/search/listings?cun=toutes-les-rubriques&fcun=toutes-les-rubriques&fts=fraise&pr=1`)
                             .then(response => response.json())
                             .then(data => sanitizeAnibisItems(data.listings))
 }
