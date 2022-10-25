@@ -153,41 +153,13 @@ async function fetchFromAnibis(recherche) {
     // "sec-fetch-site": "same-site"
   
 async function fetchFromRicardo() {
-    return fetch("https://attach-cors.herokuapp.com/https://www.ricardo.ch/api/mfa/categories/38399/promo-offers", {
-                                    "headers": {
-                                        "accept": "application/json, text/plain, */*",
-                                        "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,fr;q=0.7",
-                                        "sec-ch-ua": "\"Chromium\";v=\"106\", \"Google Chrome\";v=\"106\", \"Not;A=Brand\";v=\"99\"",
-                                        "sec-ch-ua-mobile": "?0",
-                                        "sec-ch-ua-platform": "\"Linux\"",
-                                    },
-                                    "referrer": "https://www.ricardo.ch/fr/c/o/antiquites-et-arts-38399/",
-                                    "referrerPolicy": "unsafe-url",
-                                    "body": null,
-                                    "method": "GET",
-                                    "mode": "cors",
-                                    "credentials": "omit"
-                            })
+    return fetch("https://attach-cors.herokuapp.com/https://www.ricardo.ch/api/mfa/categories/38399/promo-offers")
                             .then(response => response.json())
                             .then(data => sanitizeRicardoItems(data))
 }
 
 async function fetchFromDepop() {
-    return fetch("https://attach-cors.herokuapp.com/https://webapi.depop.com/api/v2/search/products/?categories=9&itemsPerPage=24&country=gb&currency=GBP&sort=relevance", {
-        "headers": {
-          "accept": "application/json, text/plain, */*",
-          "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,fr;q=0.7",
-          "sec-ch-ua": "\"Chromium\";v=\"106\", \"Google Chrome\";v=\"106\", \"Not;A=Brand\";v=\"99\"",
-          "sec-ch-ua-mobile": "?0",
-          "sec-ch-ua-platform": "\"Linux\"",
-        },
-        "referrer": "https://www.depop.com/",
-        "referrerPolicy": "unsafe-url",
-        "body": null,
-        "method": "GET",
-        "mode": "cors",
-        "credentials": "omit"
-      })
+    return fetch("https://attach-cors.herokuapp.com/https://webapi.depop.com/api/v2/search/products/?categories=9&itemsPerPage=24&country=gb&currency=GBP&sort=relevance")
         .then(response => response.json())
         .then(data => sanitizeDepopItems(data.products))
 }
