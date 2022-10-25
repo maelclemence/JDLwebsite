@@ -85,7 +85,7 @@ function addArticle(articles) {
 
 async function fetchData() {
     console.log('Fetching data...');
-    Promise.call(fetchFromAnibis('shampoing')).then(function(results) {
+    Promise.call(fetchFromAnibis("Shampoo")).then(function(results) {
             addArticles(results);
     });
     Promise.call(fetchFromRicardo()).then(function(results) {
