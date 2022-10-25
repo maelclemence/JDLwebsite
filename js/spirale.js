@@ -7,11 +7,8 @@ function sanitizeAnibisItems(anibis) {
         var image = "../../img/goose.png";
         try {
             const baseUrl = article.imageData.baseUrl;
-            console.log("baseUrl : ", baseUrl)
             const size   =  "/?380x285/0/60/";
-            console.log("stuff : ", size)
             const first_image   = article.imageData.images[0].substring(9);
-            console.log("image : ", first_image)
             image = baseUrl + size + first_image;
         } catch (error) {
             console.log("error : ", error)
@@ -88,7 +85,7 @@ function addArticle(articles) {
 
 async function fetchData() {
     console.log('Fetching data...');
-    Promise.call(fetchFromAnibis()).then(function(results) {
+    Promise.call(fetchFromAnibis('shampoing')).then(function(results) {
             addArticles(results);
     });
     Promise.call(fetchFromRicardo()).then(function(results) {
@@ -99,8 +96,8 @@ async function fetchData() {
     });
 }
 
-async function fetchFromAnibis() {
-    return fetch("https://attach-cors.herokuapp.com/https://api.anibis.ch/v4/fr/search/listings?cun=toutes-les-rubriques&fcun=toutes-les-rubriques&fts=clavier&pr=1", {
+async function fetchFromAnibis(recherche) {
+    return fetch(`https://attach-cors.herokuapp.com/https://api.anibis.ch/v4/fr/search/listings?cun=toutes-les-rubriques&fcun=toutes-les-rubriques&fts=${recherche}&pr=1`, {
                                 "headers": {
                                     "accept": "application/json",
                                     "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,fr;q=0.7",
@@ -109,7 +106,7 @@ async function fetchFromAnibis() {
                                     "sec-ch-ua-mobile": "?0",
                                     "sec-ch-ua-platform": "\"Linux\"",
                                 },
-                                "referrer": "https://www.anibis.ch/fr/c/toutes-les-rubriques?fts=clavier",
+                                "referrer": `https://www.anibis.ch/fr/c/toutes-les-rubriques?fts=${recherche}`,
                                 "referrerPolicy": "unsafe-url",
                                 "body": null,
                                 "method": "GET",
