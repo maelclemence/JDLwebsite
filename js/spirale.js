@@ -86,18 +86,11 @@ function addArticles(articles) {
 async function fetchData() {
     console.log('Fetching data...');
     let anibisPromise = new Promise(
-        function(myResolve, myReject) {
-            console.log('Fetching from anibis...');
-            let results = fetchFromAnibis("Shampoo");
-            console.log('results : ', results);
-            console.log('results.length : ', results.length);
-            if (true) {
-                console.log('Anibis results all good');
-                myResolve(results);
-            } else {
-                console.log('Anibis results not good');
-                myReject("Anibis fetch failed");
-            }
+        (resolve, reject) => {
+            setTimeout(() => {
+                let results = fetchFromAnibis("shampoo");
+                resolve(results);
+            }, 300);
         }
     );
 
