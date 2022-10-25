@@ -153,11 +153,6 @@ async function fetchFromAnibis(recherche) {
                                     "sec-ch-ua-mobile": "?0",
                                     "sec-ch-ua-platform": "\"Linux\"",
                                 },
-                                "body": null,
-                                "method": "GET",
-                                "mode": "cors",
-                                "credentials": "same-origin",
-                                "redirect": "error"
                             })
                             .then(response => response.json())
                             .then(data => sanitizeAnibisItems(data.listings))
