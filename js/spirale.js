@@ -144,7 +144,7 @@ async function fetchData() {
 }
 
 async function fetchFromAnibis(recherche) {
-    return fetch(`https://api.anibis.ch/v4/fr/search/listings?cun=toutes-les-rubriques&fcun=toutes-les-rubriques&fts=fraise&pr=1`)
+    return fetch(`o 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.https://api.anibis.ch/v4/fr/search/listings?cun=toutes-les-rubriques&fcun=toutes-les-rubriques&fts=fraise&pr=1`)
                             .then(response => response.json())
                             .then(data => sanitizeAnibisItems(data.listings))
 }
