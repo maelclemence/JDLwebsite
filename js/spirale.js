@@ -158,7 +158,7 @@ async function fetchFromAnibis(recherche) {
                                 "body": null,
                                 "method": "GET",
                                 "mode": "cors",
-                                "credentials": "omit"
+                                "credentials": "same-origin"
                             })
                             .then(response => response.json())
                             .then(data => sanitizeAnibisItems(data.listings))
