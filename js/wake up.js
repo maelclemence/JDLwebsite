@@ -18,9 +18,21 @@ function getRandomColor() {
     return taille;
   }
 
+  function creatBackgroundColor() {
+    var numbers = '0123456789';
+    var taille = "px";
+    for (var i = 0; i < 2; i++) {
+      taille = numbers[Math.floor(Math.random() * 10)] + taille ;
+    }
+    console.log("taille:",taille) 
+    return taille;
+  }
 
-async function fetchData() {
+  async function fetchData() {
+
     setColorTitle();
+    
+
     const response = await fetch("https://attach-cors.herokuapp.com/https://www.boredapi.com/api/activity?type=recreational", {
             "headers": {
                 "accept": "application/json, t§ext/plain, */*",
@@ -40,20 +52,62 @@ async function fetchData() {
             .then(response => response.json())
             .then(data => showRandomActivity(data.activity))
             .catch(err => console.log(err));
+
+
+
+
 }
 
+
+// get window width and height
+var winWidth = window.innerWidth*0.9;
+var winHeight = window.innerHeight*0.9;
+
+  // get random numbers for each element
+  randomTop = getRandomNumber(0, winHeight);
+  randomLeft = getRandomNumber(0, winWidth);
+
+
+// function that returns a random number between a min and max
+function getRandomNumber(min, max) {
+    
+  return Math.random() * (max - min) + min;
+
+}
+   
 
   function setColorTitle() {
     document.getElementById('title').innerHTML=`<h1  
-    class="text-center" style="color:${getRandomColor()};font-size: 100px" id="title" > WAKE UP! </h1>`
+    class="text-center" style="color:${getRandomColor()};font-size: 100px " id="title" > WAKE UP! 
+    </h1>`
   }
 
-function showRandomActivity(activity) {
-    document.getElementById('activity').innerHTML =` \n <p style="color:${getRandomColor()};font-size:${size()}">${activity}</p>`
-    + document.getElementById('activity').innerHTML;
-   
+  var sentences = [];
+
+function changeSentencesOpacity()
+{ sentences.forEach(function(sentence){
+let result = sentence.substring(33, 36);
+  console.log(result)
+  mastercard=parseFloat(result);
+  let visacard= 0.9*(Math.round(mastercard*10)/10)
+  let backtostring= visacard.toString()
+  sentence.replace(sentence.substring(33.36),backtostring)
+  console.log(visacard)
+  sentencemodif=sentence.replace(result,backtostring)
+  console.log(sentencemodif)
+
+
+})
+
+
 }
 
 
+function showRandomActivity(activity) {
+  const sentence = ` <p style="color:${getRandomColor()};opacity:1.0;font-size:${size()};top:${getRandomNumber(0, winHeight)}px;left:${getRandomNumber(0, winHeight)}px">${activity}</p>`;
+    // iterate on list and diminish opacity of each sentence
+    changeSentencesOpacity()
+    sentences.push(sentence);
+    document.getElementById('activity').innerHTML = sentences.join();
    
-
+}
