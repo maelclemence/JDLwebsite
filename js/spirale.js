@@ -104,15 +104,43 @@ async function fetchData() {
         }
     );
 
-    let ricardoPromise = new Promise(function() {
-        console.log('Fetching from ricardo...');
-        fetchFromRicardo()
-    });
+    let ricardoPromise = new Promise(
+        (resolve, reject) => {
+            setTimeout(() => {
+                let results = fetchFromRicardo("shampoo");
+                resolve(results);
+            }, 300);
+        }
+    );
 
-    ricardoPromise.then(function(results) {
-        console.log('Adding Ricardo articles...');
-        addArticles(results);
-    });
+    ricardoPromise.then(
+        function(results) {
+            console.log('Adding Ricardo articles...', results);
+            addArticles(results);
+        },
+        function(err) {
+            console.log('Error fetching from Ricardo : ', err);
+        }
+    );
+
+    let depopPromise = new Promise(
+        (resolve, reject) => {
+            setTimeout(() => {
+                let results = fetchFromDepop("shampoo");
+                resolve(results);
+            }, 300);
+        }
+    );
+
+    depopPromise.then(
+        function(results) {
+            console.log('Adding Depop articles...', results);
+            addArticles(results);
+        },
+        function(err) {
+            console.log('Error fetching from Depop : ', err);
+        }
+    );
 }
 
 async function fetchFromAnibis(recherche) {
