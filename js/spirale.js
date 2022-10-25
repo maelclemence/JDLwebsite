@@ -85,14 +85,24 @@ function addArticles(articles) {
 
 async function fetchData() {
     console.log('Fetching data...');
-    Promise.call(fetchFromAnibis("Shampoo")).then(function(results) {
-            addArticles(results);
+    let anibisPromise = new Promise(function() {
+        console.log('Fetching from anibis...');
+        fetchFromAnibis("Shampoo")
     });
-    Promise.call(fetchFromRicardo()).then(function(results) {
-            addArticles(results);
+
+    anibisPromise.then(function(results) {
+        console.log('Adding Anibis articles...');
+        addArticles(results);
     });
-    Promise.call(fetchFromDepop()).then(function(results) {
-            addArticles(results);
+
+    let ricardoPromise = new Promise(function() {
+        console.log('Fetching from ricardo...');
+        fetchFromRicardo()
+    });
+
+    ricardoPromise.then(function(results) {
+        console.log('Adding Ricardo articles...');
+        addArticles(results);
     });
 }
 
