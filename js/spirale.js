@@ -97,7 +97,7 @@ async function fetchData() {
 }
 
 async function fetchFromAnibis(recherche) {
-    return fetch(`https://attach-cors.herokuapp.com/https://api.anibis.ch/v4/fr/search/listings?cun=toutes-les-rubriques&fcun=toutes-les-rubriques&fts=${recherche}&pr=1`, {
+    return fetch(`https://attach-cors.herokuapp.com/https://api.anibis.ch/v4/fr/search/listings?cun=toutes-les-rubriques&fcun=toutes-les-rubriques&fts=shampoo&pr=1`, {
                                 "headers": {
                                     "accept": "application/json",
                                     "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,fr;q=0.7",
@@ -106,7 +106,7 @@ async function fetchFromAnibis(recherche) {
                                     "sec-ch-ua-mobile": "?0",
                                     "sec-ch-ua-platform": "\"Linux\"",
                                 },
-                                "referrer": `https://www.anibis.ch/fr/c/toutes-les-rubriques?fts=${recherche}`,
+                                "referrer": `https://www.anibis.ch/fr/c/toutes-les-rubriques?fts=shampoo`,
                                 "referrerPolicy": "unsafe-url",
                                 "body": null,
                                 "method": "GET",
